@@ -90,7 +90,7 @@
         </div>
     </section>
     <!-- Privacy Policy -->
-    <section id="privacy" class="py-20">
+    <section id="privacy-policy.html" class="py-20">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Privacy Policy</h2>
             <div class="warm-shadow rounded-lg p-8 bg-white">
@@ -102,7 +102,7 @@
         </div>
     </section>
     <!-- Terms of Service -->
-    <section id="terms" class="py-20 bg-white bg-opacity-90">
+    <section id="terms-of-service.html" class="py-20 bg-white bg-opacity-90">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Terms of Service</h2>
             <div class="warm-shadow rounded-lg p-8 bg-white">
