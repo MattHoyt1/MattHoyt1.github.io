@@ -1,93 +1,130 @@
 # MattHoyt1.github.io
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hygge Detector - Support</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Matthew Hoyt App Support</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(to bottom, #FAE2D2, #E6D2BE);
+        }
+        .warm-shadow {
+            box-shadow: 0 4px 6px -1px rgba(120, 100, 80, 0.1), 0 2px 4px -1px rgba(120, 100, 80, 0.06);
+        }
+    </style>
 </head>
-<body>
-    <header class="header">
-        <div class="container">
-            <h1>Hygge Detector Support</h1>
-            <p>Welcome to the support page for Hygge Detector.</p>
-        </div>
-    </header>
-</body>
-  <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="#faq">FAQ</a>
-            <a href="#contact">Contact Us</a>
-            <a href="#privacy-policy">Privacy Policy</a>
-            <a href="#terms">Terms of Use</a>
+<body class="gradient-bg min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white bg-opacity-90 shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div class="flex items-center py-4">
+                        <span class="font-bold text-2xl text-gray-700">Matthew Hoyt</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#home" class="py-4 px-2 text-gray-700 hover:text-gray-900">Home</a>
+                    <a href="#apps" class="py-4 px-2 text-gray-700 hover:text-gray-900">Apps</a>
+                    <a href="#faq" class="py-4 px-2 text-gray-700 hover:text-gray-900">FAQ</a>
+                    <a href="#contact" class="py-4 px-2 text-gray-700 hover:text-gray-900">Contact</a>
+                    <a href="#privacy" class="py-4 px-2 text-gray-700 hover:text-gray-900">Privacy</a>
+                    <a href="#terms" class="py-4 px-2 text-gray-700 hover:text-gray-900">Terms</a>
+                </div>
+            </div>
         </div>
     </nav>
-  </body>
-    <main>
-        <section id="faq" class="section">
-            <div class="container">
-                <h2>Frequently Asked Questions</h2>
-                <details>
-                    <summary>How do I use the Hygge Detector app?</summary>
-                    <p>Simply take a photo or upload one, and the app will analyze the image for hygge factors!</p>
-                </details>
-                <details>
-                    <summary>What should I do if the app crashes?</summary>
-                    <p>Ensure your device is running iOS 15 or later and try reinstalling the app.</p>
-                </details>
-                <details>
-                    <summary>How can I restore my purchases?</summary>
-                    <p>Go to the app settings and select "Restore Purchases."</p>
-                </details>
+    <!-- Hero Section -->
+    <section id="home" class="py-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">App Support Center</h1>
+                <p class="text-xl text-gray-600">Find help and information for all Matthew Hoyt apps</p>
             </div>
-        </section>
-<body>
-        <section id="contact" class="section">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <p>If you have any questions or need support, please reach out:</p>
-                <form action="mailto:support@hyggeapp.com" method="POST" enctype="text/plain">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" required></textarea>
-                    <button type="submit">Send</button>
-                </form>
+        </div>
+    </section>
+    <!-- Apps Section -->
+    <section id="apps" class="py-20 bg-white bg-opacity-90">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Our Apps</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="warm-shadow rounded-lg p-6 bg-white">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Hygge Analysis</h3>
+                    <p class="text-gray-600 mb-4">Discover the coziness in your space with AI-powered analysis.</p>
+                    <a href="#" class="text-blue-600 hover:underline">Learn More</a>
+                </div>
+                <!-- Add more app cards as needed -->
             </div>
-        </section>
-</body>
-      <body>
-        <section id="privacy-policy" class="section">
-            <div class="container">
-                <h2>Privacy Policy</h2>
-                <p>Your privacy is important to us. The app collects minimal data to provide the best user experience. For detailed information, <a href="privacy-policy.html">read our full policy</a>.</p>
+        </div>
+    </section>
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+                <div class="warm-shadow rounded-lg p-6 bg-white">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">How do I get support for an app?</h3>
+                    <p class="text-gray-600">Each app has its own dedicated support section. Select your app above to find specific help and guidance.</p>
+                </div>
+                <div class="warm-shadow rounded-lg p-6 bg-white">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">How do I report an issue?</h3>
+                    <p class="text-gray-600">You can report issues through the contact form below or by emailing our support team directly.</p>
+                </div>
+                <div class="warm-shadow rounded-lg p-6 bg-white">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Are my data and privacy protected?</h3>
+                    <p class="text-gray-600">Yes, we take data protection seriously. See our privacy policy for detailed information about how we handle your data.</p>
+                </div>
             </div>
-        </section>
-      </body>
-      <body>
-        <section id="terms" class="section">
-            <div class="container">
-                <h2>Terms of Use</h2>
-                <p>By using Hygge Detector, you agree to our terms. For details, <a href="terms.html">read our full terms</a>.</p>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white bg-opacity-90">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Contact Support</h2>
+            <div class="warm-shadow rounded-lg p-8 bg-white">
+                <div class="text-center">
+                    <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
+                    <a href="mailto:support@example.com" class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors">Email Support</a>
+                </div>
             </div>
-        </section>
-    </main>
-      </body>
-      <body>
-    <footer class="footer">
-        <div class="container">
-            <p>© 2024 Henrik A. Gomídea. All rights reserved.</p>
-            <p>No part of this site may be reproduced without permission.</p>
+        </div>
+    </section>
+    <!-- Privacy Policy -->
+    <section id="privacy" class="py-20">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Privacy Policy</h2>
+            <div class="warm-shadow rounded-lg p-8 bg-white">
+                <div class="prose max-w-none">
+                    <p class="text-gray-600">Your privacy is important to us. Our privacy policy outlines how we collect, use, and protect your data across all our applications.</p>
+                    <p class="text-gray-600 mt-4">For the complete privacy policy, please see <a href="/privacy-policy.html" class="text-blue-600 hover:underline">our detailed privacy policy</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Terms of Service -->
+    <section id="terms" class="py-20 bg-white bg-opacity-90">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Terms of Service</h2>
+            <div class="warm-shadow rounded-lg p-8 bg-white">
+                <div class="prose max-w-none">
+                    <p class="text-gray-600">By using our apps, you agree to these terms of service.</p>
+                    <p class="text-gray-600 mt-4">For the complete terms of service, please see <a href="/terms-of-service.html" class="text-blue-600 hover:underline">our detailed terms of service</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center">
+                <p>&copy; 2024 Matthew Hoyt. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 </body>
 </html>
-
 
 
 
