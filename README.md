@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matthew Hoyt App Support</title>
+    <title>Privacy Policy - Matthew Hoyt Apps</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <style>
         .gradient-bg {
@@ -14,107 +15,71 @@
     </style>
 </head>
 <body class="gradient-bg min-h-screen">
-    <!-- Navigation -->
     <nav class="bg-white bg-opacity-90 shadow-lg sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between">
                 <div class="flex space-x-7">
                     <div class="flex items-center py-4">
-                        <span class="font-bold text-2xl text-gray-700">Matthew Hoyt</span>
+                        <a href="index.html" class="font-bold text-2xl text-gray-700">Matthew Hoyt</a>
                     </div>
                 </div>
                 <div class="flex items-center space-x-6">
-                    <a href="#home" class="py-4 px-2 text-gray-700 hover:text-gray-900">Home</a>
-                    <a href="#apps" class="py-4 px-2 text-gray-700 hover:text-gray-900">Apps</a>
-                    <a href="#faq" class="py-4 px-2 text-gray-700 hover:text-gray-900">FAQ</a>
-                    <a href="#contact" class="py-4 px-2 text-gray-700 hover:text-gray-900">Contact</a>
-                    <a href="#privacy" class="py-4 px-2 text-gray-700 hover:text-gray-900">Privacy</a>
-                    <a href="#terms" class="py-4 px-2 text-gray-700 hover:text-gray-900">Terms</a>
+                    <a href="index.html" class="py-4 px-2 text-gray-700 hover:text-gray-900">Back to Home</a>
                 </div>
             </div>
         </div>
     </nav>
-    <!-- Hero Section -->
-    <section id="home" class="py-20">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center">
-                <h1 class="text-4xl font-bold text-gray-800 mb-4">App Support Center</h1>
-                <p class="text-xl text-gray-600">Find help and information for all Matthew Hoyt apps</p>
+    <div class="max-w-4xl mx-auto px-4 py-12">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6">Privacy Policy</h1>    
+            <div class="space-y-6 text-gray-600">
+                <section>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3">1. Information We Collect</h2>
+                    <p>We collect information that you provide directly to us when using our applications:</p>
+                    <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>User-provided content and analysis requests</li>
+                        <li>Device information and usage statistics</li>
+                        <li>Crash reports and performance data</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3">2. How We Use Your Information</h2>
+                    <p>We use the collected information to:</p>
+                    <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>Provide and improve our services</li>
+                        <li>Analyze app performance and fix issues</li>
+                        <li>Communicate with you about updates and support</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3">3. Data Storage and Security</h2>
+                    <p>We implement appropriate security measures to protect your personal information. Your data is stored securely and accessed only when necessary to provide our services.</p>
+                </section>
+                <section>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3">4. Third-Party Services</h2>
+                    <p>Our applications may use third-party services for analytics and crash reporting. These services have their own privacy policies and data collection practices.</p>
+                </section>
+                <section>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3">5. Your Rights</h2>
+                    <p>You have the right to:</p>
+                    <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>Access your personal information</li>
+                        <li>Request deletion of your data</li>
+                        <li>Opt-out of data collection</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3">6. Updates to Privacy Policy</h2>
+                    <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>
+                </section>
+                <section>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3">7. Contact Us</h2>
+                    <p>If you have any questions about this privacy policy, please contact us at support@example.com.</p>
+                </section>
             </div>
         </div>
-    </section>
-    <!-- Apps Section -->
-    <section id="apps" class="py-20 bg-white bg-opacity-90">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Our Apps</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="warm-shadow rounded-lg p-6 bg-white">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Hygge Analysis</h3>
-                    <p class="text-gray-600 mb-4">Discover the coziness in your space with AI-powered analysis.</p>
-                    <a href="#" class="text-blue-600 hover:underline">Learn More</a>
-                </div>
-                <!-- Add more app cards as needed -->
-            </div>
-        </div>
-    </section>
-    <!-- FAQ Section -->
-    <section id="faq" class="py-20">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Frequently Asked Questions</h2>
-            <div class="space-y-6">
-                <div class="warm-shadow rounded-lg p-6 bg-white">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">How do I get support for an app?</h3>
-                    <p class="text-gray-600">Each app has its own dedicated support section. Select your app above to find specific help and guidance.</p>
-                </div>
-                <div class="warm-shadow rounded-lg p-6 bg-white">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">How do I report an issue?</h3>
-                    <p class="text-gray-600">You can report issues through the contact form below or by emailing our support team directly.</p>
-                </div>
-                <div class="warm-shadow rounded-lg p-6 bg-white">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Are my data and privacy protected?</h3>
-                    <p class="text-gray-600">Yes, we take data protection seriously. See our privacy policy for detailed information about how we handle your data.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white bg-opacity-90">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Contact Support</h2>
-            <div class="warm-shadow rounded-lg p-8 bg-white">
-                <div class="text-center">
-                    <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
-                    <a href="mailto:support@example.com" class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors">Email Support</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Privacy Policy -->
-    <section id="privacy" class="py-20">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Privacy Policy</h2>
-            <div class="warm-shadow rounded-lg p-8 bg-white">
-                <div class="prose max-w-none">
-                    <p class="text-gray-600">Your privacy is important to us. Our privacy policy outlines how we collect, use, and protect your data across all our applications.</p>
-                    <p class="text-gray-600 mt-4">For the complete privacy policy, please see <a href="/privacy-policy.html" class="text-blue-600 hover:underline">our detailed privacy policy</a>.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Terms of Service -->
-    <section id="terms" class="py-20 bg-white bg-opacity-90">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Terms of Service</h2>
-            <div class="warm-shadow rounded-lg p-8 bg-white">
-                <div class="prose max-w-none">
-                    <p class="text-gray-600">By using our apps, you agree to these terms of service.</p>
-                    <p class="text-gray-600 mt-4">For the complete terms of service, please see <a href="/terms-of-service.html" class="text-blue-600 hover:underline">our detailed terms of service</a>.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
+    </div>
+    <footer class="bg-gray-800 text-white py-8 mt-12">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center">
                 <p>&copy; 2024 Matthew Hoyt. All rights reserved.</p>
@@ -123,6 +88,3 @@
     </footer>
 </body>
 </html>
-
-
-
