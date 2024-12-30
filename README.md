@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="flex items-center space-x-6">
-                    <a href="#home" class="py-4 px-2 text-gray-700 hover:text-gray-900">Back to Home</a>
+                    <a href="home" class="py-4 px-2 text-gray-700 hover:text-gray-900">Back to Home</a>
                 </div>
             </div>
         </div>
