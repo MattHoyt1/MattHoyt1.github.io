@@ -35,7 +35,7 @@
         </div>
     </nav>
     <!-- Hero Section -->
-    <section id="#home" class="py-20">
+    <section id="home" class="py-20">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center">
                 <h1 class="text-4xl font-bold text-gray-800 mb-4">App Support Center</h1>
@@ -44,7 +44,7 @@
         </div>
     </section>
     <!-- Apps Section -->
-    <section id="#apps" class="py-20 bg-white bg-opacity-90">
+    <section id="apps" class="py-20 bg-white bg-opacity-90">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Our Apps</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -58,7 +58,7 @@
         </div>
     </section>
     <!-- FAQ Section -->
-    <section id="#faq" class="py-20">
+    <section id="faq" class="py-20">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Frequently Asked Questions</h2>
             <div class="space-y-6">
@@ -78,7 +78,7 @@
         </div>
     </section>
     <!-- Contact Section -->
-    <section id="#contact" class="py-20 bg-white bg-opacity-90">
+    <section id="contact" class="py-20 bg-white bg-opacity-90">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Contact Support</h2>
             <div class="warm-shadow rounded-lg p-8 bg-white">
@@ -90,7 +90,7 @@
         </div>
     </section>
     <!-- Privacy Policy -->
-    <section id="#privacy" class="py-20">
+    <section id="privacy" class="py-20">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Privacy Policy</h2>
             <div class="warm-shadow rounded-lg p-8 bg-white">
@@ -102,7 +102,7 @@
         </div>
     </section>
     <!-- Terms of Service -->
-    <section id="#terms" class="py-20 bg-white bg-opacity-90">
+    <section id="terms" class="py-20 bg-white bg-opacity-90">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Terms of Service</h2>
             <div class="warm-shadow rounded-lg p-8 bg-white">
