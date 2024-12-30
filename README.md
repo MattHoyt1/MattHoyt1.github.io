@@ -24,7 +24,12 @@
                     </div>
                 </div>
                 <div class="flex items-center space-x-6">
-                    <a href="index.html" class="py-4 px-2 text-gray-700 hover:text-gray-900">Back to Home</a>
+                    <a href="#home" class="py-4 px-2 text-gray-700 hover:text-gray-900">Home</a>
+                    <a href="#apps" class="py-4 px-2 text-gray-700 hover:text-gray-900">Apps</a>
+                    <a href="#faq" class="py-4 px-2 text-gray-700 hover:text-gray-900">FAQ</a>
+                    <a href="#contact" class="py-4 px-2 text-gray-700 hover:text-gray-900">Contact</a>
+                    <a href="privacy-policy.html" class="py-4 px-2 text-gray-700 hover:text-gray-900">Privacy</a>
+                    <a href="terms-of-service.html" class="py-4 px-2 text-gray-700 hover:text-gray-900">Terms</a>
                 </div>
             </div>
         </div>
