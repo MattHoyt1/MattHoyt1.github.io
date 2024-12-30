@@ -29,6 +29,7 @@
             </div>
         </div>
     </nav>
+
     <div class="max-w-4xl mx-auto px-4 py-12">
         <div class="bg-white rounded-lg shadow-lg p-8">
             <h1 class="text-3xl font-bold text-gray-800 mb-6">Privacy Policy</h1>    
@@ -42,6 +43,7 @@
                         <li>Crash reports and performance data</li>
                     </ul>
                 </section>
+
                 <section>
                     <h2 class="text-xl font-semibold text-gray-800 mb-3">2. How We Use Your Information</h2>
                     <p>We use the collected information to:</p>
@@ -51,14 +53,17 @@
                         <li>Communicate with you about updates and support</li>
                     </ul>
                 </section>
+
                 <section>
                     <h2 class="text-xl font-semibold text-gray-800 mb-3">3. Data Storage and Security</h2>
                     <p>We implement appropriate security measures to protect your personal information. Your data is stored securely and accessed only when necessary to provide our services.</p>
                 </section>
+
                 <section>
                     <h2 class="text-xl font-semibold text-gray-800 mb-3">4. Third-Party Services</h2>
                     <p>Our applications may use third-party services for analytics and crash reporting. These services have their own privacy policies and data collection practices.</p>
                 </section>
+
                 <section>
                     <h2 class="text-xl font-semibold text-gray-800 mb-3">5. Your Rights</h2>
                     <p>You have the right to:</p>
@@ -68,10 +73,12 @@
                         <li>Opt-out of data collection</li>
                     </ul>
                 </section>
+
                 <section>
                     <h2 class="text-xl font-semibold text-gray-800 mb-3">6. Updates to Privacy Policy</h2>
                     <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>
                 </section>
+
                 <section>
                     <h2 class="text-xl font-semibold text-gray-800 mb-3">7. Contact Us</h2>
                     <p>If you have any questions about this privacy policy, please contact us at Matthoyt1@yahoo.com.</p>
@@ -79,6 +86,7 @@
             </div>
         </div>
     </div>
+
     <footer class="bg-gray-800 text-white py-8 mt-12">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center">
