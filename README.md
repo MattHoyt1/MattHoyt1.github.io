@@ -159,13 +159,51 @@
             <h2 class="text-3xl font-bold text-gray-800 mb-6">Privacy Policy</h2>
             <div class="space-y-6 text-gray-600">
                 <section>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">1. Information We Collect</h3>
-                    <p>We collect information that you provide directly to us when using our applications:</p>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Information We Collect</h3>
+                    <p>In-App Purchases:</p>
                     <ul class="list-disc pl-6 mt-2 space-y-2">
-                        <li>User-provided content and analysis requests</li>
-                        <li>Device information and usage statistics</li>
-                        <li>Crash reports and performance data</li>
-                    </ul>
+                        <li>All payments are processed securely through Apple’s in-app purchase system. We do not collect or store payment information. For details on Apple’s privacy practices, please visit Apple’s Privacy Policy.</li>
+                        </ul>
+                        <p>Usage Data:</p>
+                    <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>We may collect anonymous data on app usage, such as how often features are used, to improve the app’s functionality.</li>
+                        </ul>
+                         <p>Images Submitted for Analysis:</p>
+                    <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>Any images uploaded or taken with the app are processed locally on your device. We do not store or share these images.</li>
+                        </ul>
+                </section>
+                <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">How We Use Your Data</h3>
+                    <p>Unlocking Premium Features:</p>
+                    <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>We use purchase confirmation data to enable premium features or subscriptions.</li>
+                        </ul>
+                        <p>Improving the App:</p>
+                    <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li> Anonymous usage data helps us refine the app and add new features.</li>
+                        </ul>
+                </section>
+                 <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Data Sharing</h3>
+                    <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>We do not sell or share your personal information with third parties. Payment data is securely handled by Apple.</li>
+                        </ul>
+                </section>
+                 <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Your Rights</h3>
+                    <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>You can manage or cancel subscriptions via your Apple account.</li>
+                        <li>If you have any concerns about your data, please contact us at Matthewhoytapps@gmail.com.</li>
+                        </ul>
+                </section>
+                  <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Updates to This Policy</h3>
+                    <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>We may update this policy from time to time. Changes will be posted within the app and on our website.
+
+If you have any questions, feel free to contact us at Matthewhoytapps@gmail.com.</li>
+                        </ul>
                 </section>
                 <!-- [Rest of privacy policy sections] -->
                 <section>
