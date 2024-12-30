@@ -96,7 +96,7 @@
             <div class="warm-shadow rounded-lg p-8 bg-white">
                 <div class="prose max-w-none">
                     <p class="text-gray-600">Your privacy is important to us. Our privacy policy outlines how we collect, use, and protect your data across all our applications.</p>
-                    <p class="text-gray-600 mt-4">For the complete privacy policy, please see <a href="#privacy.html" class="text-blue-600 hover:underline">our detailed privacy policy</a>.</p>
+                    <p class="text-gray-600 mt-4">For the complete privacy policy, please see <a href="privacy.html" class="text-blue-600 hover:underline">our detailed privacy policy</a>.</p>
                 </div>
             </div>
         </div>
