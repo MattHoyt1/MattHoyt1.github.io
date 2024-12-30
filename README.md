@@ -20,7 +20,7 @@
             <div class="flex justify-between">
                 <div class="flex space-x-7">
                     <div class="flex items-center py-4">
-                        <a href="index.html" class="font-bold text-2xl text-gray-700">Matthew Hoyt</a>
+                        <a href="#home" class="font-bold text-2xl text-gray-700">Matthew Hoyt</a>
                     </div>
                 </div>
                 <div class="flex items-center space-x-6">
@@ -69,7 +69,7 @@
                 </section>
                 <section>
                     <h2 class="text-xl font-semibold text-gray-800 mb-3">8. Contact Information</h2>
-                    <p>If you have any questions about these Terms of Service, please contact us at support@example.com.</p>
+                    <p>If you have any questions about these Terms of Service, please contact us at Matthoyt1@yahoo.com.</p>
                 </section>
             </div>
         </div>
