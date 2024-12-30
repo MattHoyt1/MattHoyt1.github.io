@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +21,7 @@
             <div class="flex justify-between">
                 <div class="flex space-x-7">
                     <div class="flex items-center py-4">
-                        <span class="font-bold text-2xl text-gray-700">Matthew Hoyt</span>
+                        <a href="index.html" class="font-bold text-2xl text-gray-700">Matthew Hoyt</a>
                     </div>
                 </div>
                 <div class="flex items-center space-x-6">
@@ -28,12 +29,13 @@
                     <a href="#apps" class="py-4 px-2 text-gray-700 hover:text-gray-900">Apps</a>
                     <a href="#faq" class="py-4 px-2 text-gray-700 hover:text-gray-900">FAQ</a>
                     <a href="#contact" class="py-4 px-2 text-gray-700 hover:text-gray-900">Contact</a>
-                    <a href="#privacy" class="py-4 px-2 text-gray-700 hover:text-gray-900">Privacy</a>
-                    <a href="#terms" class="py-4 px-2 text-gray-700 hover:text-gray-900">Terms</a>
+                    <a href="privacy.html" class="py-4 px-2 text-gray-700 hover:text-gray-900">Privacy</a>
+                    <a href="terms.html" class="py-4 px-2 text-gray-700 hover:text-gray-900">Terms</a>
                 </div>
             </div>
         </div>
     </nav>
+
     <!-- Hero Section -->
     <section id="home" class="py-20">
         <div class="max-w-6xl mx-auto px-4">
@@ -43,6 +45,7 @@
             </div>
         </div>
     </section>
+
     <!-- Apps Section -->
     <section id="apps" class="py-20 bg-white bg-opacity-90">
         <div class="max-w-4xl mx-auto px-4">
@@ -53,10 +56,10 @@
                     <p class="text-gray-600 mb-4">Discover the coziness in your space with AI-powered analysis.</p>
                     <a href="#" class="text-blue-600 hover:underline">Learn More</a>
                 </div>
-                <!-- Add more app cards as needed -->
             </div>
         </div>
     </section>
+
     <!-- FAQ Section -->
     <section id="faq" class="py-20">
         <div class="max-w-4xl mx-auto px-4">
@@ -72,11 +75,12 @@
                 </div>
                 <div class="warm-shadow rounded-lg p-6 bg-white">
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Are my data and privacy protected?</h3>
-                    <p class="text-gray-600">Yes, we take data protection seriously. See our privacy policy for detailed information about how we handle your data.</p>
+                    <p class="text-gray-600">Yes, we take data protection seriously. See our <a href="privacy.html" class="text-blue-600 hover:underline">privacy policy</a> for detailed information about how we handle your data.</p>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-white bg-opacity-90">
         <div class="max-w-4xl mx-auto px-4">
@@ -89,6 +93,7 @@
             </div>
         </div>
     </section>
+
     <!-- Privacy Policy -->
     <section id="privacy" class="py-20">
         <div class="max-w-4xl mx-auto px-4">
@@ -101,6 +106,7 @@
             </div>
         </div>
     </section>
+
     <!-- Terms of Service -->
     <section id="terms" class="py-20 bg-white bg-opacity-90">
         <div class="max-w-4xl mx-auto px-4">
@@ -113,6 +119,7 @@
             </div>
         </div>
     </section>
+
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="max-w-6xl mx-auto px-4">
@@ -123,6 +130,5 @@
     </footer>
 </body>
 </html>
-
 
 
