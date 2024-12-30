@@ -203,7 +203,7 @@
                         </ul>
                         <p>Age Requirement:</p>
                         <ul class="list-disc pl-6 mt-2 space-y-2">
-                        <li>You must be at least 13 years old to use ourapps. If you are under 18, you must have parental or gaurdian consent.</li>
+                        <li>You must be at least 13 years old to use our apps. If you are under 18, you must have parental or gaurdian consent.</li>
                     </ul>
                 </section>
                 <section>
@@ -213,6 +213,43 @@
                 <li>All purchases are processed securely through in-app purchases, such as premium features or subscriptions</li>
                 <li>Purchased features are non-transferable and non-refundable unless required by applicable law.</li>
                 </ul>
+                </section>
+                <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. Intellectual Property</h3>
+                     <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>All content, logos, and materials in Hygge Detector are owned by us and protected by copyright laws. You may not copy, modify, distribute, or sell any part of the app.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. Disclaimer of Warranties</h3>
+                     <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>Apps are provided "as is" without warranties of any kind, either express or implied.</li>
+                        <li>We do not guarantee the accuracy, reliability, or suitability of the app’s results.</li>
+                    </ul>
+                </section>
+                 <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. Limitation of Liability</h3>
+                     <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>To the maximum extent permitted by law, we are not liable for any damages arising from your use of the app, including indirect, incidental, or consequential damages.</li>
+                        </ul>
+                </section>
+                  <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. Termination</h3>
+                     <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>We reserve the right to terminate or suspend your access to the app at any time, with or without notice, if you violate these Terms and Conditions.</li>
+                        </ul>
+                </section>
+                <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. Governing Law</h3>
+                     <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>These terms are governed by the laws of The United States of America. Any disputes will be resolved exclusively in the courts of The United States of America.</li>
+                        </ul>
+                </section>
+                <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. Changes to Terms</h3>
+                     <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>We may update these Terms and Conditions from time to time. Updates will be posted within the app and on our website.</li>
+                        </ul>
                 </section>
                 <section>
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">3. Contact Information</h3>
