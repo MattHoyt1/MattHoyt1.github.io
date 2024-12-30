@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="flex items-center space-x-6">
-                    <a href="index.html" class="py-4 px-2 text-gray-700 hover:text-gray-900">Back to Home</a>
+                    <a href="#home" class="py-4 px-2 text-gray-700 hover:text-gray-900">Back to Home</a>
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
                 </section>
                 <section>
                     <h2 class="text-xl font-semibold text-gray-800 mb-3">7. Contact Us</h2>
-                    <p>If you have any questions about this privacy policy, please contact us at support@example.com.</p>
+                    <p>If you have any questions about this privacy policy, please contact us at Matthoyt1@yahoo.com.</p>
                 </section>
             </div>
         </div>
