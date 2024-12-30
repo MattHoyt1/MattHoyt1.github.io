@@ -12,6 +12,37 @@
         .warm-shadow {
             box-shadow: 0 4px 6px -1px rgba(120, 100, 80, 0.1), 0 2px 4px -1px rgba(120, 100, 80, 0.06);
         }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .modal.active {
+            display: block;
+        }
+        .modal-content {
+            position: relative;
+            background: white;
+            margin: 2rem auto;
+            padding: 2rem;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 0.5rem;
+        }
+        .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="gradient-bg min-h-screen">
@@ -21,7 +52,7 @@
             <div class="flex justify-between">
                 <div class="flex space-x-7">
                     <div class="flex items-center py-4">
-                        <a href="index.html" class="font-bold text-2xl text-gray-700">Matthew Hoyt</a>
+                        <span class="font-bold text-2xl text-gray-700">Matthew Hoyt</span>
                     </div>
                 </div>
                 <div class="flex items-center space-x-6">
@@ -29,14 +60,15 @@
                     <a href="#apps" class="py-4 px-2 text-gray-700 hover:text-gray-900">Apps</a>
                     <a href="#faq" class="py-4 px-2 text-gray-700 hover:text-gray-900">FAQ</a>
                     <a href="#contact" class="py-4 px-2 text-gray-700 hover:text-gray-900">Contact</a>
-                    <a href="privacy.html" class="py-4 px-2 text-gray-700 hover:text-gray-900">Privacy</a>
-                    <a href="terms.html" class="py-4 px-2 text-gray-700 hover:text-gray-900">Terms</a>
+                    <button onclick="showModal('privacy-modal')" class="py-4 px-2 text-gray-700 hover:text-gray-900">Privacy</button>
+                    <button onclick="showModal('terms-modal')" class="py-4 px-2 text-gray-700 hover:text-gray-900">Terms</button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Main Content Sections -->
+    <!-- [Previous sections remain unchanged: Hero, Apps, FAQ, Contact] -->
     <section id="home" class="py-20">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center">
@@ -75,7 +107,7 @@
                 </div>
                 <div class="warm-shadow rounded-lg p-6 bg-white">
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Are my data and privacy protected?</h3>
-                    <p class="text-gray-600">Yes, we take data protection seriously. See our <a href="privacy.html" class="text-blue-600 hover:underline">privacy policy</a> for detailed information about how we handle your data.</p>
+                    <p class="text-gray-600">Yes, we take data protection seriously. See our <button onclick="showModal('privacy-modal')" class="text-blue-600 hover:underline">privacy policy</button> for detailed information about how we handle your data.</p>
                 </div>
             </div>
         </div>
@@ -94,31 +126,60 @@
         </div>
     </section>
 
-    <!-- Privacy Policy -->
-    <section id="privacy" class="py-20">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Privacy Policy</h2>
-            <div class="warm-shadow rounded-lg p-8 bg-white">
-                <div class="prose max-w-none">
-                    <p class="text-gray-600">Your privacy is important to us. Our privacy policy outlines how we collect, use, and protect your data across all our applications.</p>
-                    <p class="text-gray-600 mt-4">For the complete privacy policy, please see <a href="privacy.html" class="text-blue-600 hover:underline">our detailed privacy policy</a>.</p>
-                </div>
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content warm-shadow">
+            <span class="close-button" onclick="hideModal('privacy-modal')">&times;</span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Privacy Policy</h2>
+            <div class="space-y-6 text-gray-600">
+                <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">1. Information We Collect</h3>
+                    <p>We collect information that you provide directly to us when using our applications:</p>
+                    <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>User-provided content and analysis requests</li>
+                        <li>Device information and usage statistics</li>
+                        <li>Crash reports and performance data</li>
+                    </ul>
+                </section>
+                <!-- [Rest of privacy policy sections] -->
+                <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. How We Use Your Information</h3>
+                    <p>We use the collected information to:</p>
+                    <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>Provide and improve our services</li>
+                        <li>Analyze app performance and fix issues</li>
+                        <li>Communicate with you about updates and support</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">7. Contact Us</h3>
+                    <p>If you have any questions about this privacy policy, please contact us at Matthoyt1@yahoo.com</p>
+                </section>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Terms of Service -->
-    <section id="terms" class="py-20 bg-white bg-opacity-90">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Terms of Service</h2>
-            <div class="warm-shadow rounded-lg p-8 bg-white">
-                <div class="prose max-w-none">
-                    <p class="text-gray-600">By using our apps, you agree to these terms of service.</p>
-                    <p class="text-gray-600 mt-4">For the complete terms of service, please see <a href="terms.html" class="text-blue-600 hover:underline">our detailed terms of service</a>.</p>
-                </div>
+    <!-- Terms of Service Modal -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-content warm-shadow">
+            <span class="close-button" onclick="hideModal('terms-modal')">&times;</span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Terms of Service</h2>
+            <div class="space-y-6 text-gray-600">
+                <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">1. Acceptance of Terms</h3>
+                    <p>By downloading, installing, or using our applications, you agree to be bound by these Terms of Service.</p>
+                </section>
+                <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. License to Use</h3>
+                    <p>We grant you a limited, non-exclusive, non-transferable license to use our applications for personal, non-commercial purposes.</p>
+                </section>
+                <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">3. Contact Information</h3>
+                    <p>If you have any questions about these Terms of Service, please contact us at Matthoyt1@yahoo.com</p>
+                </section>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
@@ -128,7 +189,37 @@
             </div>
         </div>
     </footer>
+
+    <!-- JavaScript for Modal Functionality -->
+    <script>
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
 </body>
 </html>
-
 
