@@ -78,18 +78,45 @@
     </section>
 
     <!-- Apps Section -->
-    <section id="apps" class="py-20 bg-white bg-opacity-90">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Our Apps</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="warm-shadow rounded-lg p-6 bg-white">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Hygge Analysis</h3>
-                    <p class="text-gray-600 mb-4">Discover the coziness in your space with AI-powered analysis.</p>
-                    <a href="#" class="text-blue-600 hover:underline">Learn More</a>
-                </div>
+   <section id="apps" class="py-20 bg-white bg-opacity-90">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Our Apps</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="warm-shadow rounded-lg p-6 bg-white">
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Hygge Analysis</h3>
+                <p class="text-gray-600 mb-4">Discover the coziness in your space with AI-powered analysis.</p>
+                <button onclick="showModal('learn-more-modal')" class="text-blue-600 hover:underline">Learn More</button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- Learn More Modal -->
+<div id="learn-more-modal" class="modal">
+    <div class="modal-content warm-shadow">
+        <span class="close-button" onclick="hideModal('learn-more-modal')">&times;</span>
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">What is hygge?</h2>
+        <p class="text-gray-600 leading-relaxed">
+            Now, you might be wondering, "What is hygge?" Hygge is the Danish art of creating a space that feels warm, inviting, and, yes, perfectly cozy. And until today, understanding hygge was subjective, elusive—a feeling. But not anymore.
+        </p>
+        <p class="text-gray-600 leading-relaxed mt-4">
+            With the Hygge Detector App, we're bringing the power of advanced AI, computer vision, and the art of design together to give you a tool that doesn’t just look at your room—it understands it.
+        </p>
+        <p class="text-gray-600 leading-relaxed mt-4">
+            Take a photo or upload one. In just seconds, our app analyzes the lighting, the colors, the objects—the very soul of your space. It gives you a simple, elegant score: your Hygge Score. And then? It tells you exactly how to improve it. Need more warmth? Add a candle. Too much clutter? Simplify. Missing harmony? We'll guide you.
+        </p>
+        <p class="text-gray-600 leading-relaxed mt-4">
+            This app doesn’t just show you the numbers—it makes you feel something. It inspires you to create a sanctuary for yourself, your loved ones, and your life.
+        </p>
+        <p class="text-gray-600 leading-relaxed mt-4">
+            We believe technology should enhance your humanity. With the Hygge Detector App, we’re helping you enhance your home, your mood, and your connection to what matters most.
+        </p>
+        <p class="text-gray-600 leading-relaxed mt-4">
+            This isn't just an app. It's hygge, in your pocket.
+        </p>
+    </div>
+</div>
+
 
     <!-- FAQ Section -->
     <section id="faq" class="py-20">
@@ -119,7 +146,7 @@
             <div class="warm-shadow rounded-lg p-8 bg-white">
                 <div class="text-center">
                     <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
-                    <a href="mailto:Matthoyt1@yahoo.com" class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors">Email Support</a>
+                    <a href="mailto:Matthewhoytapps@gmail.com" class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors">Email Support</a>
                 </div>
             </div>
         </div>
@@ -152,7 +179,7 @@
                 </section>
                 <section>
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">7. Contact Us</h3>
-                    <p>If you have any questions about this privacy policy, please contact us at Matthoyt1@yahoo.com</p>
+                    <p>If you have any questions about this privacy policy, please contact us at Matthewhoytapps@gmail.com</p>
                 </section>
             </div>
         </div>
@@ -174,7 +201,7 @@
                 </section>
                 <section>
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">3. Contact Information</h3>
-                    <p>If you have any questions about these Terms of Service, please contact us at Matthoyt1@yahoo.com</p>
+                    <p>If you have any questions about these Terms of Service, please contact us at Matthewhoytapps@gmail.com</p>
                 </section>
             </div>
         </div>
