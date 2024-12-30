@@ -193,11 +193,26 @@
             <div class="space-y-6 text-gray-600">
                 <section>
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">1. Acceptance of Terms</h3>
-                    <p>By downloading, installing, or using our applications, you agree to be bound by these Terms of Service.</p>
+                    <p>By downloading, installing, or using our applications, you agree to be bound by these Terms of Service. If you do not agree, please stop using our apps. </p>
                 </section>
                 <section>
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">2. License to Use</h3>
-                    <p>We grant you a limited, non-exclusive, non-transferable license to use our applications for personal, non-commercial purposes.</p>
+                    <p>Personal Use Only:</p>
+                     <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>We grant you a limited, non-exclusive, non-transferable license to use our applications for personal, non-commercial purposes.</li>
+                        </ul>
+                        <p>Age Requirement:</p>
+                        <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>You must be at least 13 years old to use ourapps. If you are under 18, you must have parental or gaurdian consent.</li>
+                    </ul>
+                </section>
+                <section>
+                <h3 class="text-xl font-semibold text-gray-800 mb-3">3. In-App Purchases</h3>
+                <p>Our apps may offer optional in-app purchases, such as premium features or subscriptions</p>
+                <ul class="list-disc pl-6 mt-2 space-y-2">
+                <li>All purchases are processed securely through in-app purchases, such as premium features or subscriptions</li>
+                <li>Purchased features are non-transferable and non-refundable unless required by applicable law.</li>
+                </ul>
                 </section>
                 <section>
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">3. Contact Information</h3>
