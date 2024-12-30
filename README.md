@@ -314,6 +314,10 @@ If you have any questions, feel free to contact us at Matthewhoytapps@gmail.com.
     </footer>
     <!-- JavaScript for Modal Functionality -->
     <script>
+    document.getElementById('menu-btn').addEventListener('click', function () {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+});
         function showModal(modalId) {
             document.getElementById(modalId).classList.add('active');
             document.body.style.overflow = 'hidden';
