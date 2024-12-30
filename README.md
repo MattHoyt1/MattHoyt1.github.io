@@ -54,7 +54,7 @@
                         <span class="font-bold text-2xl text-gray-700">Matthew Hoyt</span>
                     </div>
                 </div>
-                <div class="flex items-center space-x-6">
+                <div class="hidden md:flex items-center space-x-6">
                     <a href="#home" class="py-4 px-2 text-gray-700 hover:text-gray-900">Home</a>
                     <a href="#apps" class="py-4 px-2 text-gray-700 hover:text-gray-900">Apps</a>
                     <a href="#faq" class="py-4 px-2 text-gray-700 hover:text-gray-900">FAQ</a>
@@ -62,10 +62,24 @@
                     <button onclick="showModal('privacy-modal')" class="py-4 px-2 text-gray-700 hover:text-gray-900">Privacy</button>
                     <button onclick="showModal('terms-modal')" class="py-4 px-2 text-gray-700 hover:text-gray-900">Terms</button>
                 </div>
+            <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#home" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Home</a>
+            <a href="#apps" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Apps</a>
+            <a href="#faq" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
+            <a href="#contact" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Contact</a>
+            <button onclick="showModal('privacy-modal')" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Privacy</button>
+            <button onclick="showModal('terms-modal')" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Terms</button>
+        </div>
     </nav>
-
     <!-- Main Content Sections -->
     <!-- [Previous sections remain unchanged: Hero, Apps, FAQ, Contact] -->
     <section id="home" class="py-20">
@@ -76,7 +90,6 @@
             </div>
         </div>
     </section>
-
     <!-- Apps Section -->
    <section id="apps" class="py-20 bg-white bg-opacity-90">
     <div class="max-w-4xl mx-auto px-4">
@@ -116,8 +129,6 @@
         </p>
     </div>
 </div>
-
-
     <!-- FAQ Section -->
     <section id="faq" class="py-20">
         <div class="max-w-4xl mx-auto px-4">
@@ -138,7 +149,6 @@
             </div>
         </div>
     </section>
-
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-white bg-opacity-90">
         <div class="max-w-4xl mx-auto px-4">
@@ -151,7 +161,6 @@
             </div>
         </div>
     </section>
-
     <!-- Privacy Policy Modal -->
     <div id="privacy-modal" class="modal">
         <div class="modal-content warm-shadow">
@@ -222,7 +231,6 @@ If you have any questions, feel free to contact us at Matthewhoytapps@gmail.com.
             </div>
         </div>
     </div>
-
     <!-- Terms of Service Modal -->
     <div id="terms-modal" class="modal">
         <div class="modal-content warm-shadow">
@@ -296,7 +304,6 @@ If you have any questions, feel free to contact us at Matthewhoytapps@gmail.com.
             </div>
         </div>
     </div>
-
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="max-w-6xl mx-auto px-4">
@@ -305,19 +312,16 @@ If you have any questions, feel free to contact us at Matthewhoytapps@gmail.com.
             </div>
         </div>
     </footer>
-
     <!-- JavaScript for Modal Functionality -->
     <script>
         function showModal(modalId) {
             document.getElementById(modalId).classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-
         function hideModal(modalId) {
             document.getElementById(modalId).classList.remove('active');
             document.body.style.overflow = 'auto';
         }
-
         // Close modal when clicking outside
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
@@ -325,7 +329,6 @@ If you have any questions, feel free to contact us at Matthewhoytapps@gmail.com.
                 document.body.style.overflow = 'auto';
             }
         }
-
         // Close modal on escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
