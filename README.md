@@ -71,14 +71,6 @@
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="#home" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Home</a>
-            <a href="#apps" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Apps</a>
-            <a href="#faq" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
-            <a href="#contact" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Contact</a>
-            <button onclick="showModal('privacy-modal')" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Privacy</button>
-            <button onclick="showModal('terms-modal')" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Terms</button>
-        </div>
     </nav>
     <!-- Main Content Sections -->
     <!-- [Previous sections remain unchanged: Hero, Apps, FAQ, Contact] -->
