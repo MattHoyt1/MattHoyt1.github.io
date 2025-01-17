@@ -216,7 +216,7 @@ If you have any questions, feel free to contact us at Matthewhoytapps@gmail.com.
                 </section>
                 <!-- [Rest of privacy policy sections] -->
                 <section>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. How We Use Your Information</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">How We Use Your Information</h3>
                     <p>We use the collected information to:</p>
                     <ul class="list-disc pl-6 mt-2 space-y-2">
                         <li>Provide and improve our services</li>
@@ -225,7 +225,7 @@ If you have any questions, feel free to contact us at Matthewhoytapps@gmail.com.
                     </ul>
                 </section>
                 <section>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">7. Contact Us</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Contact Us</h3>
                     <p>If you have any questions about this privacy policy, please contact us at Matthewhoytapps@gmail.com</p>
                 </section>
             </div>
@@ -238,11 +238,11 @@ If you have any questions, feel free to contact us at Matthewhoytapps@gmail.com.
             <h2 class="text-3xl font-bold text-gray-800 mb-6">Terms of Service</h2>
             <div class="space-y-6 text-gray-600">
                 <section>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">1. Acceptance of Terms</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Acceptance of Terms</h3>
                     <p>By downloading, installing, or using our applications, you agree to be bound by these Terms of Service. If you do not agree, please stop using our apps. </p>
                 </section>
                 <section>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. License to Use</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">License to Use</h3>
                     <p>Personal Use Only:</p>
                      <ul class="list-disc pl-6 mt-2 space-y-2">
                         <li>We grant you a limited, non-exclusive, non-transferable license to use our applications for personal, non-commercial purposes.</li>
@@ -253,7 +253,7 @@ If you have any questions, feel free to contact us at Matthewhoytapps@gmail.com.
                     </ul>
                 </section>
                 <section>
-                <h3 class="text-xl font-semibold text-gray-800 mb-3">3. In-App Purchases</h3>
+                <h3 class="text-xl font-semibold text-gray-800 mb-3">In-App Purchases</h3>
                 <p>Our apps may offer optional in-app purchases, such as premium features or subscriptions</p>
                 <ul class="list-disc pl-6 mt-2 space-y-2">
                 <li>All purchases are processed securely through in-app purchases, such as premium features or subscriptions</li>
@@ -261,50 +261,50 @@ If you have any questions, feel free to contact us at Matthewhoytapps@gmail.com.
                 </ul>
                 </section>
                 <section>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. Intellectual Property</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Intellectual Property</h3>
                      <ul class="list-disc pl-6 mt-2 space-y-2">
                         <li>All content, logos, and materials in Hygge Detector are owned by us and protected by copyright laws. You may not copy, modify, distribute, or sell any part of the app.</li>
                     </ul>
                 </section>
                 <section>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. API Use</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">API Use</h3>
                      <ul class="list-disc pl-6 mt-2 space-y-2">
                         <li>Some of our apps use OpenAI’s API to generate content for analysis and recommendations. All usage complies with OpenAI's terms of service and privacy policies.</li>
                     </ul>
                 </section>
                 <section>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. Disclaimer of Warranties</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Disclaimer of Warranties</h3>
                      <ul class="list-disc pl-6 mt-2 space-y-2">
                         <li>Apps are provided "as is" without warranties of any kind, either express or implied.</li>
                         <li>We do not guarantee the accuracy, reliability, or suitability of the app’s results.</li>
                     </ul>
                 </section>
                  <section>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. Limitation of Liability</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Limitation of Liability</h3>
                      <ul class="list-disc pl-6 mt-2 space-y-2">
                         <li>To the maximum extent permitted by law, we are not liable for any damages arising from your use of the app, including indirect, incidental, or consequential damages.</li>
                         </ul>
                 </section>
                   <section>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. Termination</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Termination</h3>
                      <ul class="list-disc pl-6 mt-2 space-y-2">
                         <li>We reserve the right to terminate or suspend your access to the app at any time, with or without notice, if you violate these Terms and Conditions.</li>
                         </ul>
                 </section>
                 <section>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. Governing Law</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Governing Law</h3>
                      <ul class="list-disc pl-6 mt-2 space-y-2">
                         <li>These terms are governed by the laws of The United States of America. Any disputes will be resolved exclusively in the courts of The United States of America.</li>
                         </ul>
                 </section>
                 <section>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. Changes to Terms</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Changes to Terms</h3>
                      <ul class="list-disc pl-6 mt-2 space-y-2">
                         <li>We may update these Terms and Conditions from time to time. Updates will be posted within the app and on our website.</li>
                         </ul>
                 </section>
                 <section>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">3. Contact Information</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Contact Information</h3>
                     <p>If you have any questions about these Terms of Service, please contact us at Matthewhoytapps@gmail.com</p>
                 </section>
             </div>
