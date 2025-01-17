@@ -249,7 +249,7 @@ If you have any questions, feel free to contact us at Matthewhoytapps@gmail.com.
                         </ul>
                         <p>Age Requirement:</p>
                         <ul class="list-disc pl-6 mt-2 space-y-2">
-                        <li>You must be at least 13 years old to use our apps. If you are under 18, you must have parental or gaurdian consent.</li>
+                        <li>You must be at least 13 years old to use our apps. If you are under 18, you must have parental or guardian consent.</li>
                     </ul>
                 </section>
                 <section>
@@ -264,6 +264,12 @@ If you have any questions, feel free to contact us at Matthewhoytapps@gmail.com.
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">2. Intellectual Property</h3>
                      <ul class="list-disc pl-6 mt-2 space-y-2">
                         <li>All content, logos, and materials in Hygge Detector are owned by us and protected by copyright laws. You may not copy, modify, distribute, or sell any part of the app.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">2. API Use</h3>
+                     <ul class="list-disc pl-6 mt-2 space-y-2">
+                        <li>Some of our apps use OpenAI’s API to generate content for analysis and recommendations. All usage complies with OpenAI's terms of service and privacy policies.</li>
                     </ul>
                 </section>
                 <section>
