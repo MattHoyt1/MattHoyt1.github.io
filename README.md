@@ -147,7 +147,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Example App Card -->
         <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hygge Analysis</h3>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hygge Detector</h3>
           <p class="text-gray-600 mb-4">
             Discover the coziness in your space with AI-powered analysis.
           </p>
