@@ -6,56 +6,55 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts (Inter) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
 
   <style>
-    /* ========= CUSTOM BASE STYLES ========= */
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-    }
-    /* ===== BACKGROUND GRADIENT & CANVAS ===== */
+    /* ========= BACKGROUND & GENERAL LAYOUT ========= */
     body {
-      /* Subtle gradient background */
-      background: linear-gradient(135deg, #f8e9dc 0%, #e4d6c6 100%);
-      overflow-x: hidden;
+      margin: 0;
+      background: linear-gradient(to bottom, #FAE2D2, #E6D2BE);
+      font-family: 'Helvetica Neue', 'Arial', sans-serif;
       position: relative;
+      overflow-x: hidden; /* Prevent horizontal scroll on small shifts */
     }
+
+    /* ========= FLOATING SPECKS CANVAS ========= */
     canvas {
       position: fixed;
       top: 0;
       left: 0;
-      pointer-events: none;
-      z-index: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* Clicks pass through */
+      z-index: 0;           /* Behind all other content */
     }
-    /* ===== MODAL STYLES ===== */
+
+    /* ========= WARM SHADOW UTILITY ========= */
+    .warm-shadow {
+      box-shadow: 0 4px 6px -1px rgba(120, 100, 80, 0.1), 
+                  0 2px 4px -1px rgba(120, 100, 80, 0.06);
+    }
+
+    /* ========= MODAL STYLES ========= */
     .modal {
       display: none;
       position: fixed;
-      inset: 0;
+      inset: 0; /* top:0, left:0, right:0, bottom:0 */
       background-color: rgba(0, 0, 0, 0.5);
-      z-index: 50;
+      z-index: 50; /* Above normal content, below canvas is z-index:0 */
       align-items: center;
       justify-content: center;
     }
     .modal.active {
-      display: flex;
+      display: flex; /* Show the modal */
     }
     .modal-content {
-      background: #fff;
+      background: white;
+      padding: 2rem;
       width: 90%;
       max-width: 800px;
       max-height: 90vh;
       overflow-y: auto;
-      border-radius: 0.75rem;
-      padding: 2rem;
+      border-radius: 0.5rem;
       position: relative;
       animation: fadeIn 0.3s ease-out;
     }
@@ -70,6 +69,7 @@
     .close-button:hover {
       color: black;
     }
+
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -82,31 +82,28 @@
     }
   </style>
 </head>
-<body class="text-gray-700">
-
-  <!-- Canvas for subtle floating specks -->
+<body>
+  <!-- ============ FLOATING SPECKS BACKGROUND ============ -->
   <canvas id="specks"></canvas>
 
-  <!-- NAVIGATION -->
-  <nav class="sticky top-0 z-40 bg-white bg-opacity-90 backdrop-blur-sm shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between py-4">
-      <div class="text-xl font-bold">
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="bg-white bg-opacity-90 shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center py-4">
+      <!-- Logo / Title -->
+      <div class="text-2xl font-bold text-gray-700">
         Matthew Hoyt
       </div>
-      <div class="hidden md:flex space-x-6 font-medium">
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-6">
         <a href="#home" class="hover:text-gray-900 transition">Home</a>
         <a href="#apps" class="hover:text-gray-900 transition">Apps</a>
         <a href="#faq" class="hover:text-gray-900 transition">FAQ</a>
         <a href="#contact" class="hover:text-gray-900 transition">Contact</a>
-        <button onclick="showModal('privacy-modal')" class="hover:text-gray-900 transition">
-          Privacy
-        </button>
-        <button onclick="showModal('terms-modal')" class="hover:text-gray-900 transition">
-          Terms
-        </button>
+        <button onclick="showModal('privacy-modal')" class="hover:text-gray-900 transition">Privacy</button>
+        <button onclick="showModal('terms-modal')" class="hover:text-gray-900 transition">Terms</button>
       </div>
       <!-- Mobile Menu Button -->
-      <button id="menu-btn" class="md:hidden text-gray-700">
+      <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" 
              viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
@@ -114,218 +111,414 @@
         </svg>
       </button>
     </div>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-90 px-4">
-      <a href="#home" class="block py-2 border-t border-gray-200 hover:bg-gray-100">Home</a>
-      <a href="#apps" class="block py-2 border-t border-gray-200 hover:bg-gray-100">Apps</a>
-      <a href="#faq" class="block py-2 border-t border-gray-200 hover:bg-gray-100">FAQ</a>
-      <a href="#contact" class="block py-2 border-t border-gray-200 hover:bg-gray-100">Contact</a>
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-90">
+      <a href="#home" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Home</a>
+      <a href="#apps" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Apps</a>
+      <a href="#faq" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
+      <a href="#contact" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Contact</a>
       <button onclick="showModal('privacy-modal')" 
-              class="block w-full text-left py-2 border-t border-gray-200 hover:bg-gray-100">
+              class="block w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">
         Privacy
       </button>
       <button onclick="showModal('terms-modal')" 
-              class="block w-full text-left py-2 border-t border-gray-200 hover:bg-gray-100">
+              class="block w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">
         Terms
       </button>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section id="home" class="relative z-10 pt-20 pb-16 text-center">
-    <div class="max-w-3xl mx-auto px-4">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+  <!-- ============ HERO SECTION ============ -->
+  <section id="home" class="py-20 text-center relative z-10">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="text-4xl font-bold text-gray-800 drop-shadow-sm mb-4">
         App Support Center
       </h1>
-      <p class="text-lg md:text-xl text-gray-600 mb-8">
+      <p class="text-xl text-gray-600">
         Find help and information for all Matthew Hoyt apps
       </p>
-      <!-- Optional CTA Button -->
-      <a href="#apps"
-         class="inline-block bg-indigo-600 text-white font-medium rounded-lg px-6 py-3 
-                hover:bg-indigo-700 transition">
-        View Apps
-      </a>
     </div>
   </section>
 
-  <!-- APPS SECTION -->
-  <section id="apps" class="relative z-10 py-16 bg-white bg-opacity-90">
-    <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Our Apps</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- App Card -->
-        <div class="bg-white rounded-lg shadow hover:shadow-md transition p-6 relative z-10">
+  <!-- ============ APPS SECTION ============ -->
+  <section id="apps" class="py-20 bg-white bg-opacity-90 relative z-10">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Our Apps</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Example App Card -->
+        <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
           <h3 class="text-xl font-semibold text-gray-800 mb-2">Hygge Analysis</h3>
           <p class="text-gray-600 mb-4">
             Discover the coziness in your space with AI-powered analysis.
           </p>
-          <button onclick="showModal('learn-more-modal')" class="text-indigo-600 hover:underline">
+          <button onclick="showModal('learn-more-modal')" class="text-blue-600 hover:underline">
             Learn More
           </button>
         </div>
-        <!-- Add more App Cards here if needed -->
       </div>
     </div>
   </section>
 
-  <!-- LEARN MORE MODAL -->
+  <!-- ============ LEARN MORE MODAL ============ -->
   <div id="learn-more-modal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content warm-shadow">
       <span class="close-button" onclick="hideModal('learn-more-modal')">&times;</span>
-      <h2 class="text-3xl font-bold text-gray-800 mb-4">What is Hygge?</h2>
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">What is hygge?</h2>
       <p class="text-gray-600 leading-relaxed">
-        [Your detailed content about Hygge goes here...]
+        Now, you might be wondering, "What is hygge?" Hygge is the Danish art of creating a space that feels 
+        warm, inviting, and, yes, perfectly cozy. And until today, understanding hygge was subjective, elusive—a 
+        feeling. But not anymore.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-4">
+        With the Hygge Detector App, we're bringing the power of advanced AI, computer vision, and the art of 
+        design together to give you a tool that doesn’t just look at your room—it understands it.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-4">
+        Take a photo or upload one. In just seconds, our app analyzes the lighting, the colors, the objects—the 
+        very soul of your space. It gives you a simple, elegant score: your Hygge Score. And then? It tells you 
+        exactly how to improve it. Need more warmth? Add a candle. Too much clutter? Simplify. Missing harmony? 
+        We'll guide you.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-4">
+        This app doesn’t just show you the numbers—it makes you feel something. It inspires you to create a sanctuary 
+        for yourself, your loved ones, and your life.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-4">
+        We believe technology should enhance your humanity. With the Hygge Detector App, we’re helping you enhance your 
+        home, your mood, and your connection to what matters most.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-4">
+        This isn't just an app. It's hygge, in your pocket.
       </p>
     </div>
   </div>
 
-  <!-- FAQ SECTION -->
-  <section id="faq" class="relative z-10 py-16">
+  <!-- ============ FAQ SECTION ============ -->
+  <section id="faq" class="py-20 relative z-10">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Frequently Asked Questions</h2>
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Frequently Asked Questions</h2>
       <div class="space-y-6">
-        <!-- FAQ Item -->
-        <div class="bg-white rounded-lg shadow p-6">
+        <!-- FAQ 1 -->
+        <div class="warm-shadow rounded-lg p-6 bg-white">
           <h3 class="text-xl font-semibold text-gray-800 mb-2">How do I get support for an app?</h3>
           <p class="text-gray-600">
             Each app has its own dedicated support section. Select your app above to find specific help and guidance.
           </p>
         </div>
-        <!-- FAQ Item -->
-        <div class="bg-white rounded-lg shadow p-6">
+        <!-- FAQ 2 -->
+        <div class="warm-shadow rounded-lg p-6 bg-white">
           <h3 class="text-xl font-semibold text-gray-800 mb-2">How do I report an issue?</h3>
           <p class="text-gray-600">
-            You can report issues through the contact section or by emailing our support team directly.
+            You can report issues through the contact form below or by emailing our support team directly.
           </p>
         </div>
-        <!-- FAQ Item -->
-        <div class="bg-white rounded-lg shadow p-6">
+        <!-- FAQ 3 -->
+        <div class="warm-shadow rounded-lg p-6 bg-white">
           <h3 class="text-xl font-semibold text-gray-800 mb-2">Are my data and privacy protected?</h3>
           <p class="text-gray-600">
             Yes, we take data protection seriously. See our 
-            <button onclick="showModal('privacy-modal')" class="text-indigo-600 hover:underline">privacy policy</button>
-            for details.
+            <button onclick="showModal('privacy-modal')" class="text-blue-600 hover:underline">privacy policy</button> 
+            for detailed information about how we handle your data.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="relative z-10 py-16 bg-white bg-opacity-90">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold text-gray-800 mb-6">Contact Support</h2>
-      <div class="bg-white rounded-lg shadow p-8">
-        <p class="text-gray-600 mb-4">
-          Need help with one of our apps? We're here to assist you!
-        </p>
-        <a href="mailto:Matthewhoytapps@gmail.com"
-           class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition">
-          Email Support
-        </a>
+  <!-- ============ CONTACT SECTION ============ -->
+  <section id="contact" class="py-20 bg-white bg-opacity-90 relative z-10">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Contact Support</h2>
+      <div class="warm-shadow rounded-lg p-8 bg-white">
+        <div class="text-center">
+          <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
+          <a href="mailto:Matthewhoytapps@gmail.com" 
+             class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition">
+            Email Support
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PRIVACY MODAL -->
+  <!-- ============ PRIVACY POLICY MODAL ============ -->
   <div id="privacy-modal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content warm-shadow">
       <span class="close-button" onclick="hideModal('privacy-modal')">&times;</span>
       <h2 class="text-3xl font-bold text-gray-800 mb-6">Privacy Policy</h2>
       <div class="space-y-6 text-gray-600">
-        <!-- Your detailed privacy policy content here -->
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Information We Collect</h3>
+          <p>In-App Purchases:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>
+              All payments are processed securely through Apple’s in-app purchase system. 
+              We do not collect or store payment information. 
+              For details on Apple’s privacy practices, please visit Apple’s Privacy Policy.
+            </li>
+          </ul>
+          <p class="mt-4">Usage Data:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>
+              We may collect anonymous data on app usage, such as how often features are used, 
+              to improve the app’s functionality.
+            </li>
+          </ul>
+          <p class="mt-4">Images Submitted for Analysis:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>Any images uploaded or taken with the app are processed locally on your device. 
+                We do not store or share these images.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">How We Use Your Data</h3>
+          <p>Unlocking Premium Features:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>We use purchase confirmation data to enable premium features or subscriptions.</li>
+          </ul>
+          <p class="mt-4">Improving the App:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>Anonymous usage data helps us refine the app and add new features.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Data Sharing</h3>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>
+              We do not sell or share your personal information with third parties. 
+              Payment data is securely handled by Apple.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Your Rights</h3>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>You can manage or cancel subscriptions via your Apple account.</li>
+            <li>If you have any concerns about your data, please contact us at Matthewhoytapps@gmail.com.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Updates to This Policy</h3>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>
+              We may update this policy from time to time. Changes will be posted within the app and on our website.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">How We Use Your Information</h3>
+          <p>We use the collected information to:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>Provide and improve our services</li>
+            <li>Analyze app performance and fix issues</li>
+            <li>Communicate with you about updates and support</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Contact Us</h3>
+          <p>If you have any questions about this privacy policy, please contact us at <strong>Matthewhoytapps@gmail.com</strong></p>
+        </section>
       </div>
     </div>
   </div>
 
-  <!-- TERMS MODAL -->
+  <!-- ============ TERMS OF SERVICE MODAL ============ -->
   <div id="terms-modal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content warm-shadow">
       <span class="close-button" onclick="hideModal('terms-modal')">&times;</span>
       <h2 class="text-3xl font-bold text-gray-800 mb-6">Terms of Service</h2>
       <div class="space-y-6 text-gray-600">
-        <!-- Your detailed terms content here -->
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Acceptance of Terms</h3>
+          <p>
+            By downloading, installing, or using our applications, you agree to be bound by these Terms of Service. 
+            If you do not agree, please stop using our apps.
+          </p>
+        </section>
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">License to Use</h3>
+          <p>Personal Use Only:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>
+              We grant you a limited, non-exclusive, non-transferable license to use our applications for personal, 
+              non-commercial purposes.
+            </li>
+          </ul>
+          <p class="mt-4">Age Requirement:</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>
+              You must be at least 13 years old to use our apps. If you are under 18, you must have parental or 
+              guardian consent.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">In-App Purchases</h3>
+          <p>Our apps may offer optional in-app purchases, such as premium features or subscriptions</p>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>All purchases are processed securely through in-app purchases.</li>
+            <li>Purchased features are non-transferable and non-refundable unless required by applicable law.</li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Intellectual Property</h3>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>
+              All content, logos, and materials in Hygge Detector are owned by us and protected by copyright laws. 
+              You may not copy, modify, distribute, or sell any part of the app.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">API Use</h3>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>
+              Some of our apps use OpenAI’s API to generate content for analysis and recommendations. 
+              All usage complies with OpenAI's terms of service and privacy policies.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Disclaimer of Warranties</h3>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>Apps are provided "as is" without warranties of any kind, either express or implied.</li>
+            <li>We do not guarantee the accuracy, reliability, or suitability of the app’s results.</li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Limitation of Liability</h3>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>
+              To the maximum extent permitted by law, we are not liable for any damages arising from your use of the app, 
+              including indirect, incidental, or consequential damages.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Termination</h3>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>
+              We reserve the right to terminate or suspend your access to the app at any time, with or without notice, 
+              if you violate these Terms and Conditions.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Governing Law</h3>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>
+              These terms are governed by the laws of The United States of America. Any disputes will be resolved exclusively 
+              in the courts of The United States of America.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Changes to Terms</h3>
+          <ul class="list-disc pl-6 mt-2 space-y-2">
+            <li>
+              We may update these Terms and Conditions from time to time. Updates will be posted within the app and on our 
+              website.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Contact Information</h3>
+          <p>
+            If you have any questions about these Terms of Service, please contact us at 
+            <strong>Matthewhoytapps@gmail.com</strong>
+          </p>
+        </section>
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="bg-gray-800 text-white py-8 text-center">
-    <div class="max-w-5xl mx-auto px-4">
-      <p>&copy; 2025 Matthew Hoyt. All rights reserved.</p>
-    </div>
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-gray-800 text-white py-8 text-center relative z-10">
+    <p>&copy; 2024 Matthew Hoyt. All rights reserved.</p>
   </footer>
 
-  <!-- JAVASCRIPT -->
+  <!-- ============ JAVASCRIPT ============ -->
   <script>
-    /* ===== FLOATING SPECKS ===== */
+    /* ========== FLOATING SPECKS BACKGROUND ========== */
     const canvas = document.getElementById('specks');
     const ctx = canvas.getContext('2d');
-
+    
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
+    
     resizeCanvas();
-
+    
     const specks = [];
-    const numSpecks = 40; // Adjust for more/fewer specks
-
+    const numSpecks = 50; // Adjust for more or fewer specks
+    
     for (let i = 0; i < numSpecks; i++) {
       specks.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        r: Math.random() * 1.3 + 0.3,
-        sx: (Math.random() - 0.5) * 0.2,
-        sy: (Math.random() - 0.5) * 0.2
+        radius: Math.random() * 1.5 + 0.5, // Tiny dots
+        speedX: (Math.random() - 0.5) * 0.2, // Very slow horizontal drift
+        speedY: (Math.random() - 0.5) * 0.2, // Very slow vertical drift
       });
     }
-
-    function animate() {
+    
+    function drawSpecks() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.6)'; // Soft white
-      specks.forEach(s => {
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'; // Soft white glow
+
+      specks.forEach(speck => {
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.arc(speck.x, speck.y, speck.radius, 0, Math.PI * 2);
         ctx.fill();
         
-        // Move
-        s.x += s.sx;
-        s.y += s.sy;
-
-        // Wrap around screen edges
-        if (s.x < 0) s.x = canvas.width;
-        if (s.x > canvas.width) s.x = 0;
-        if (s.y < 0) s.y = canvas.height;
-        if (s.y > canvas.height) s.y = 0;
+        // Update position
+        speck.x += speck.speedX;
+        speck.y += speck.speedY;
+        
+        // Wrap around edges
+        if (speck.x < 0) speck.x = canvas.width;
+        if (speck.x > canvas.width) speck.x = 0;
+        if (speck.y < 0) speck.y = canvas.height;
+        if (speck.y > canvas.height) speck.y = 0;
       });
-      requestAnimationFrame(animate);
+      
+      requestAnimationFrame(drawSpecks);
     }
-    animate();
-
+    
+    drawSpecks();
+    
     window.addEventListener('resize', () => {
       resizeCanvas();
+      // Reposition specks if needed
     });
 
-    /* ===== MOBILE MENU TOGGLE ===== */
+    /* ========== MOBILE MENU TOGGLE ========== */
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+
     menuBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
 
-    /* ===== MODAL HANDLERS ===== */
-    function showModal(id) {
-      document.getElementById(id).classList.add('active');
-      document.body.style.overflow = 'hidden'; 
-    }
-    function hideModal(id) {
-      document.getElementById(id).classList.remove('active');
-      document.body.style.overflow = 'auto'; 
+    /* ========== MODAL FUNCTIONS ========== */
+    function showModal(modalId) {
+      document.getElementById(modalId).classList.add('active');
+      document.body.style.overflow = 'hidden'; /* Prevent scrolling behind the modal */
     }
 
-    // Close modal if user clicks outside content
+    function hideModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal if user clicks outside of modal content
     window.addEventListener('click', (e) => {
       if (e.target.classList.contains('modal')) {
         e.target.classList.remove('active');
@@ -333,10 +526,10 @@
       }
     });
 
-    // Close on Escape key
+    // Close modal on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        document.querySelectorAll('.modal').forEach(modal => {
+        document.querySelectorAll('.modal').forEach((modal) => {
           modal.classList.remove('active');
         });
         document.body.style.overflow = 'auto';
@@ -345,3 +538,4 @@
   </script>
 </body>
 </html>
+
