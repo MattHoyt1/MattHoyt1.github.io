@@ -96,7 +96,7 @@
         <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Our Apps</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="warm-shadow rounded-lg p-6 bg-white">
-                <h3 class="text-xl font-semibold text-gray-800 mb-2">Hygge Analysis</h3>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Hygge Detector</h3>
                 <p class="text-gray-600 mb-4">Discover the coziness in your space with AI-powered analysis.</p>
                 <button onclick="showModal('learn-more-modal')" class="text-blue-600 hover:underline">Learn More</button>
             </div>
