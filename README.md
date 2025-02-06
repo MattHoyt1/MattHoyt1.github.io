@@ -61,17 +61,23 @@ body {
     0 0 0 1px rgba(120, 100, 80, 0.05);
 }
 
-    #contact .warm-shadow {
-  display: block; /* Ensures the container is always visible */
-}
 
-#contact .text-center {
-  visibility: visible; /* Explicitly set visibility */
-  opacity: 1; /* Ensure full opacity */
+#contact .warm-shadow {
+  position: relative;
+  z-index: 1;
 }
 
 #contact a[href^="mailto"] {
-  display: inline-block; /* Maintains button layout while ensuring visibility */
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* Ensure the container is also fully visible */
+#contact .text-center {
+  position: relative;
   visibility: visible;
   opacity: 1;
 }
@@ -324,7 +330,7 @@ body {
         <div class="text-center">
           <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
           <a href="mailto:Matthewhoytapps@gmail.com" 
-             class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
+             class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 relative z-[1] opacity-100">
             Email Support
           </a>
         </div>
