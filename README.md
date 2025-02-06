@@ -302,15 +302,14 @@ body {
   </section>
 
   <!-- ============ CONTACT SECTION ============ -->
-<!-- Simplified Contact Section -->
-<section id="contact" class="py-20">
+<section id="contact" class="py-20 bg-white bg-opacity-90 relative z-10">
   <div class="max-w-4xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-8">Contact Support</h2>
-    <div class="bg-white p-8 rounded-lg shadow-lg">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Contact Support</h2>
+    <div class="warm-shadow rounded-lg p-8 bg-white">
       <div class="text-center">
-        <p class="mb-4">Need help with one of our apps? We're here to assist you!</p>
+        <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
         <a href="mailto:Matthewhoytapps@gmail.com" 
-           class="bg-gray-800 text-white px-6 py-3 rounded-lg inline-block">
+           class="text-white bg-gray-800 px-6 py-3 rounded-lg hover:bg-gray-700 inline-block">
           Email Support
         </a>
       </div>
