@@ -61,27 +61,6 @@ body {
     0 0 0 1px rgba(120, 100, 80, 0.05);
 }
 
-
-#contact .warm-shadow {
-  position: relative;
-  z-index: 1;
-}
-
-#contact a[href^="mailto"] {
-  display: inline-block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  position: relative;
-  z-index: 2;
-}
-
-/* Ensure the container is also fully visible */
-#contact .text-center {
-  position: relative;
-  visibility: visible;
-  opacity: 1;
-}
-
 /* ========= CARD ENHANCEMENTS ========= */
 .modal-content, 
 .rounded-lg {
@@ -323,20 +302,20 @@ body {
   </section>
 
   <!-- ============ CONTACT SECTION ============ -->
-  <section id="contact" class="py-20 bg-white bg-opacity-90 relative z-10">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Contact Support</h2>
-      <div class="warm-shadow rounded-lg p-8 bg-white">
-        <div class="text-center">
-          <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
-          <a href="mailto:Matthewhoytapps@gmail.com" 
-             class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 relative z-[1] opacity-100">
-            Email Support
-          </a>
-        </div>
+<section id="contact" class="py-20 bg-white bg-opacity-90 relative z-10">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Contact Support</h2>
+    <div class="warm-shadow rounded-lg p-8 bg-white">
+      <div class="text-center">
+        <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
+        <a href="mailto:Matthewhoytapps@gmail.com" 
+           class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-medium px-6 py-3 rounded-lg transition duration-200">
+          Email Support
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- ============ PRIVACY POLICY MODAL ============ -->
   <div id="privacy-modal" class="modal">
