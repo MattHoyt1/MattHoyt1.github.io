@@ -34,7 +34,7 @@ canvas {
   pointer-events: none;
   z-index: 0;
   opacity: 1;
-  mix-blend-mode: soft-light; /* Changed for better visibility */
+  mix-blend-mode: screen; /* Changed for better visibility */
 }
 
     /* ========= WARM SHADOW UTILITY ========= */
@@ -406,7 +406,6 @@ nav {/* ========= CARD HOVER EFFECT ========= */
                 We do not store or share these images.</li>
           </ul>
         </section>
-
         <section>
           <h3 class="text-xl font-semibold text-gray-800 mb-3">How We Use Your Data</h3>
           <p>Unlocking Premium Features:</p>
@@ -418,7 +417,6 @@ nav {/* ========= CARD HOVER EFFECT ========= */
             <li>Anonymous usage data helps us refine the app and add new features.</li>
           </ul>
         </section>
-
         <section>
           <h3 class="text-xl font-semibold text-gray-800 mb-3">Data Sharing</h3>
           <ul class="list-disc pl-6 mt-2 space-y-2">
@@ -428,7 +426,6 @@ nav {/* ========= CARD HOVER EFFECT ========= */
             </li>
           </ul>
         </section>
-
         <section>
           <h3 class="text-xl font-semibold text-gray-800 mb-3">Your Rights</h3>
           <ul class="list-disc pl-6 mt-2 space-y-2">
@@ -436,7 +433,6 @@ nav {/* ========= CARD HOVER EFFECT ========= */
             <li>If you have any concerns about your data, please contact us at Matthewhoytapps@gmail.com.</li>
           </ul>
         </section>
-
         <section>
           <h3 class="text-xl font-semibold text-gray-800 mb-3">Updates to This Policy</h3>
           <ul class="list-disc pl-6 mt-2 space-y-2">
@@ -445,7 +441,6 @@ nav {/* ========= CARD HOVER EFFECT ========= */
             </li>
           </ul>
         </section>
-
         <section>
           <h3 class="text-xl font-semibold text-gray-800 mb-3">How We Use Your Information</h3>
           <p>We use the collected information to:</p>
@@ -455,7 +450,6 @@ nav {/* ========= CARD HOVER EFFECT ========= */
             <li>Communicate with you about updates and support</li>
           </ul>
         </section>
-
         <section>
           <h3 class="text-xl font-semibold text-gray-800 mb-3">Contact Us</h3>
           <p>If you have any questions about this privacy policy, please contact us at <strong>Matthewhoytapps@gmail.com</strong></p>
@@ -463,7 +457,6 @@ nav {/* ========= CARD HOVER EFFECT ========= */
       </div>
     </div>
   </div>
-
   <!-- ============ TERMS OF SERVICE MODAL ============ -->
   <div id="terms-modal" class="modal">
     <div class="modal-content warm-shadow">
