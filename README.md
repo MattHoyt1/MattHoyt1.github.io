@@ -8,10 +8,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-/* ========= BACKGROUND & GENERAL LAYOUT ========= */
+    /* ========= BACKGROUND & GENERAL LAYOUT ========= */
 body {
   margin: 0;
   min-height: 100vh;
+  /* Reversed gradient with purple at bottom, adjusted color stops for smoother transition */
   background: linear-gradient(
     to bottom,
     #fdf6e3 0%,
@@ -23,7 +24,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ========= FLOATING SPECKS CANVAS ========= */
+    /* ========= FLOATING SPECKS CANVAS ========= */
 canvas {
   position: fixed;
   top: 0;
@@ -33,43 +34,12 @@ canvas {
   pointer-events: none;
   z-index: 0;
   opacity: 1;
-  mix-blend-mode: soft-light;
+  mix-blend-mode: soft-light; /* Changed for better visibility */
 }
 
-/* ========= NAVIGATION ENHANCEMENT ========= */
-nav {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 
-    0 8px 16px -4px rgba(120, 100, 80, 0.1),
-    0 4px 8px -4px rgba(120, 100, 80, 0.06);
-  position: relative;
-  z-index: 10;
-}
-
-/* ========= SECTION ENHANCEMENTS ========= */
-section {
-  position: relative;
-  z-index: 1;
-  margin: 2rem 0;
-  padding: 2rem 0;
-}
-
-/* ========= CARD BASE STYLES ========= */
-.modal-content, 
-.rounded-lg {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-}
-
-/* ========= SHADOW EFFECTS ========= */
+    /* ========= WARM SHADOW UTILITY ========= */
 .warm-shadow {
+  /* Multiple shadow layers for depth */
   box-shadow: 
     0 16px 24px -8px rgba(120, 100, 80, 0.2),
     0 8px 16px -6px rgba(120, 100, 80, 0.15),
@@ -77,6 +47,7 @@ section {
     0 0 0 1px rgba(120, 100, 80, 0.05);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform: translateY(0);
+  /* Ensure proper stacking context without breaking clicks */
   position: relative;
   z-index: 1;
 }
@@ -89,8 +60,28 @@ section {
     0 8px 16px -6px rgba(120, 100, 80, 0.1),
     0 0 0 1px rgba(120, 100, 80, 0.05);
 }
+    
+/* ========= SECTION ENHANCEMENTS ========= */
+section {
+  position: relative;
+  z-index: 1;
+  margin: 2rem 0;
+  padding: 2rem 0;
+}
 
-/* ========= CARD HOVER EFFECTS ========= */
+/* ========= CARD ENHANCEMENTS ========= */
+.modal-content, 
+.rounded-lg {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  /* Ensure proper stacking without breaking clicks */
+  position: relative;
+  z-index: 1;
+}
+
+    /* ========= CARD HOVER EFFECT ========= */
 .rounded-lg::before {
   content: '';
   position: absolute;
@@ -105,15 +96,71 @@ section {
   );
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none;
+  pointer-events: none; /* Ensure clicks pass through */
   z-index: 1;
+}
+
+
+
+/* ========= NAVIGATION ENHANCEMENT ========= */
+nav {/* ========= CARD HOVER EFFECT ========= */
+.rounded-lg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* Ensure clicks pass through */
+  z-index: 1;
+}
+
+
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 
+    0 8px 16px -4px rgba(120, 100, 80, 0.1),
+    0 4px 8px -4px rgba(120, 100, 80, 0.06);
+  position: relative;
+  z-index: 10; /* Keep nav above other elements */
+}
+
+    
+/* ========= ADDITIONAL CARD HOVER EFFECTS ========= */
+.rounded-lg {
+  position: relative;
+  overflow: hidden;
+}
+
+.rounded-lg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .rounded-lg:hover::before {
   opacity: 1;
 }
 
-/* ========= INTERACTIVE ELEMENTS ========= */
+    /* ========= BUTTON AND LINK ENHANCEMENTS ========= */
 .rounded-lg a,
 .rounded-lg button {
   position: relative;
@@ -121,57 +168,57 @@ section {
   cursor: pointer;
 }
 
-/* ========= MODAL STYLES ========= */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 50;
-  align-items: center;
-  justify-content: center;
-}
+    /* ========= MODAL STYLES ========= */
+    .modal {
+      z-index: 50;
+      display: none;
+      position: fixed;
+      inset: 0; /* top:0, left:0, right:0, bottom:0 */
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 50; /* Above normal content, below canvas is z-index:0 */
+      align-items: center;
+      justify-content: center;
+    }
+    .modal.active {
+      display: flex; /* Show the modal */
+    }
+    .modal-content {
+      z-index: 51;
+      background: white;
+      padding: 2rem;
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 0.5rem;
+      position: relative;
+      animation: fadeIn 0.3s ease-out;
+    }
+    .close-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: gray;
+    }
+    .close-button:hover {
+      color: black;
+    }
 
-.modal.active {
-  display: flex;
-}
-
-.modal-content {
-  background: white;
-  padding: 2rem;
-  width: 90%;
-  max-width: 800px;
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: 0.5rem;
-  position: relative;
-  animation: fadeIn 0.3s ease-out;
-  z-index: 51;
-}
-
-.close-button {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: gray;
-}
-
-.close-button:hover {
-  color: black;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
   <!-- ============ FLOATING SPECKS BACKGROUND ============ -->
   <canvas id="specks"></canvas>
 
