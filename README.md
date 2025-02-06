@@ -99,7 +99,7 @@ section#contact .text-center {
   }
     
     /* ========= CARD HOVER EFFECTS ========= */
-#apps .rounded-lg::before {
+.rounded-lg::before {
   content: '';
   position: absolute;
   top: 0;
@@ -114,21 +114,44 @@ section#contact .text-center {
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
-  z-index: 1;
+  /* Change z-index to be behind the content */
+  z-index: 0;
 }
 
-#apps .rounded-lg:hover::before {
+.rounded-lg:hover::before {
   opacity: 1;
 }
 
-    .contact-card {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 0.5rem;
-  box-shadow: 
-    0 16px 24px -8px rgba(120, 100, 80, 0.2),
-    0 8px 16px -6px rgba(120, 100, 80, 0.15),
-    0 4px 8px -4px rgba(120, 100, 80, 0.1);
+/* Add new style to ensure content stays above the hover effect */
+.rounded-lg > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+    .email-support-button {
+    /* Display properties */
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    
+    /* Styling */
+    background-color: #1f2937 !important; /* bg-gray-800 equivalent */
+    color: white !important;
+    padding: 0.75rem 1.5rem !important; /* px-6 py-3 equivalent */
+    border-radius: 0.5rem !important; /* rounded-lg equivalent */
+    
+    /* Remove any transitions temporarily */
+    transition: none !important;
+    
+    /* Ensure proper stacking */
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* Separate hover styles */
+.email-support-button:hover {
+    background-color: #374151 !important; /* bg-gray-700 equivalent */
 }
     
     /* ========= MODAL STYLES ========= */
@@ -328,13 +351,13 @@ section#contact .text-center {
 <section id="contact" class="py-20 bg-white bg-opacity-90 relative z-10">
   <div class="max-w-4xl mx-auto px-4">
     <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Contact Support</h2>
-   <div class="contact-card p-8 bg-white">
+   <div class="email-support-card p-8 bg-white rounded-lg">
   <div class="text-center">
     <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
-    <a href="mailto:Matthewhoytapps@gmail.com" 
-       class="text-white bg-gray-800 px-6 py-3 rounded-lg hover:bg-gray-700 inline-block">
-      Email Support
-    </a>
+   <a href="mailto:Matthewhoytapps@gmail.com" 
+   class="email-support-button">
+   Email Support
+</a>
   </div>
 </div>
   </div>
