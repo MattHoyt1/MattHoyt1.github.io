@@ -80,7 +80,6 @@ section {
   position: relative;
   z-index: 1;
 }
-
     /* ========= CARD HOVER EFFECT ========= */
 .rounded-lg::before {
   content: '';
@@ -99,9 +98,6 @@ section {
   pointer-events: none; /* Ensure clicks pass through */
   z-index: 1;
 }
-
-
-
 /* ========= NAVIGATION ENHANCEMENT ========= */
 nav {/* ========= CARD HOVER EFFECT ========= */
 .rounded-lg::before {
@@ -121,8 +117,6 @@ nav {/* ========= CARD HOVER EFFECT ========= */
   pointer-events: none; /* Ensure clicks pass through */
   z-index: 1;
 }
-
-
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -131,15 +125,12 @@ nav {/* ========= CARD HOVER EFFECT ========= */
     0 4px 8px -4px rgba(120, 100, 80, 0.06);
   position: relative;
   z-index: 10; /* Keep nav above other elements */
-}
-
-    
+}    
 /* ========= ADDITIONAL CARD HOVER EFFECTS ========= */
 .rounded-lg {
   position: relative;
   overflow: hidden;
 }
-
 .rounded-lg::before {
   content: '';
   position: absolute;
@@ -575,58 +566,99 @@ nav {/* ========= CARD HOVER EFFECT ========= */
   <!-- ============ JAVASCRIPT ============ -->
   <script>
     /* ========== FLOATING SPECKS BACKGROUND ========== */
-    const canvas = document.getElementById('specks');
-    const ctx = canvas.getContext('2d');
-    
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    
-    resizeCanvas();
-    
-    const specks = [];
-    const numSpecks = 50; // Adjust for more or fewer specks
-    
-    for (let i = 0; i < numSpecks; i++) {
-      specks.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 1.5 + 0.5, // Tiny dots
-        speedX: (Math.random() - 0.5) * 0.2, // Very slow horizontal drift
-        speedY: (Math.random() - 0.5) * 0.2, // Very slow vertical drift
-      });
-    }
-    
-    function drawSpecks() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'; // Soft white glow
+const canvas = document.getElementById('specks');
+const ctx = canvas.getContext('2d');
 
-      specks.forEach(speck => {
-        ctx.beginPath();
-        ctx.arc(speck.x, speck.y, speck.radius, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Update position
-        speck.x += speck.speedX;
-        speck.y += speck.speedY;
-        
-        // Wrap around edges
-        if (speck.x < 0) speck.x = canvas.width;
-        if (speck.x > canvas.width) speck.x = 0;
-        if (speck.y < 0) speck.y = canvas.height;
-        if (speck.y > canvas.height) speck.y = 0;
-      });
-      
-      requestAnimationFrame(drawSpecks);
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+
+const specks = [];
+const numSpecks = 100; // Increased number for better visual effect
+
+// Create specks with enhanced visibility properties
+for (let i = 0; i < numSpecks; i++) {
+  specks.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    // Create varied sizes for more visual interest
+    radius: Math.random() < 0.2 ? 
+      Math.random() * 4 + 3 : // Large specks (20% chance)
+      Math.random() * 2 + 1.5, // Regular specks (80% chance)
+    speedX: (Math.random() - 0.5) * 0.4, // Increased movement speed
+    speedY: (Math.random() - 0.5) * 0.4,
+    // Each speck gets its own opacity for variety
+    opacity: Math.random() * 0.4 + 0.4, // Range from 0.4 to 0.8
+    // Add pulsing effect
+    pulse: Math.random() * Math.PI * 2,
+    pulseSpeed: Math.random() * 0.03 + 0.02
+  });
+}
+
+function drawSpecks() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  specks.forEach(speck => {
+    // Update pulse
+    speck.pulse += speck.pulseSpeed;
+    
+    // Calculate current opacity with pulsing effect
+    const pulseEffect = Math.sin(speck.pulse) * 0.2;
+    const currentOpacity = speck.opacity + pulseEffect;
+    
+    // Draw main speck with gradient for softer edges
+    const gradient = ctx.createRadialGradient(
+      speck.x, speck.y, 0,
+      speck.x, speck.y, speck.radius * 2
+    );
+    
+    // Create a more pronounced center
+    gradient.addColorStop(0, `rgba(255, 255, 255, ${currentOpacity})`);
+    gradient.addColorStop(0.5, `rgba(255, 255, 255, ${currentOpacity * 0.5})`);
+    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+    
+    ctx.beginPath();
+    ctx.fillStyle = gradient;
+    ctx.arc(speck.x, speck.y, speck.radius * 2.5, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Add a bright center point for larger specks
+    if (speck.radius > 2) {
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity * 1.3})`;
+      ctx.arc(speck.x, speck.y, speck.radius * 0.5, 0, Math.PI * 2);
+      ctx.fill();
     }
     
-    drawSpecks();
+    // Update position with slight randomization
+    speck.x += speck.speedX + (Math.random() - 0.5) * 0.1;
+    speck.y += speck.speedY + (Math.random() - 0.5) * 0.1;
     
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-      // Reposition specks if needed
-    });
+    // Wrap around edges
+    if (speck.x < -speck.radius * 2) speck.x = canvas.width + speck.radius;
+    if (speck.x > canvas.width + speck.radius * 2) speck.x = -speck.radius;
+    if (speck.y < -speck.radius * 2) speck.y = canvas.height + speck.radius;
+    if (speck.y > canvas.height + speck.radius * 2) speck.y = -speck.radius;
+  });
+  
+  requestAnimationFrame(drawSpecks);
+}
+
+drawSpecks();
+
+window.addEventListener('resize', () => {
+  resizeCanvas();
+  // Reposition some specks on resize for better distribution
+  specks.forEach(speck => {
+    if (Math.random() < 0.5) {
+      speck.x = Math.random() * canvas.width;
+      speck.y = Math.random() * canvas.height;
+    }
+  });
+});
 
     /* ========== MOBILE MENU TOGGLE ========== */
     const menuBtn = document.getElementById('menu-btn');
