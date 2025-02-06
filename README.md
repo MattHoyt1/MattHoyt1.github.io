@@ -82,7 +82,6 @@ section#contact .text-center {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  /* Ensure proper stacking without breaking clicks */
   position: relative;
   z-index: 1;
 }
@@ -100,28 +99,35 @@ section#contact .text-center {
   }
     
     /* ========= CARD HOVER EFFECTS ========= */
-  .rounded-lg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.2) 100%
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    z-index: 1;
-  }
+.rounded-lg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  /* Change z-index to be behind the content */
+  z-index: 0;
+}
 
-  .rounded-lg:hover::before {
-    opacity: 1;
-  }
+.rounded-lg:hover::before {
+  opacity: 1;
+}
 
+/* Add new style to ensure content stays above the hover effect */
+.rounded-lg > * {
+  position: relative;
+  z-index: 2;
+}
+    
     /* ========= MODAL STYLES ========= */
     .modal {
       z-index: 50;
