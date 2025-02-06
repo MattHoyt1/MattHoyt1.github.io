@@ -61,6 +61,20 @@ body {
     0 0 0 1px rgba(120, 100, 80, 0.05);
 }
 
+    /* Ensure email button is always visible */
+section#contact a[href^="mailto"] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: inline-block !important;
+  color: white !important;
+}
+
+/* Ensure the button's container is visible */
+section#contact .text-center {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* ========= CARD ENHANCEMENTS ========= */
 .modal-content, 
 .rounded-lg {
@@ -309,7 +323,7 @@ body {
       <div class="text-center">
         <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
         <a href="mailto:Matthewhoytapps@gmail.com" 
-           class="text-white bg-gray-800 px-6 py-3 rounded-lg hover:bg-gray-700 inline-block">
+           class="text-white bg-gray-800 px-6 py-3 rounded-lg hover:bg-gray-700 inline-block opacity-100 visible">
           Email Support
         </a>
       </div>
