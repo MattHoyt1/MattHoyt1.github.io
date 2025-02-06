@@ -99,7 +99,7 @@ section#contact .text-center {
   }
     
     /* ========= CARD HOVER EFFECTS ========= */
-.rounded-lg::before {
+#apps .rounded-lg::before {
   content: '';
   position: absolute;
   top: 0;
@@ -114,18 +114,21 @@ section#contact .text-center {
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
-  /* Change z-index to be behind the content */
-  z-index: 0;
+  z-index: 1;
 }
 
-.rounded-lg:hover::before {
+#apps .rounded-lg:hover::before {
   opacity: 1;
 }
 
-/* Add new style to ensure content stays above the hover effect */
-.rounded-lg > * {
-  position: relative;
-  z-index: 2;
+    .contact-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.5rem;
+  box-shadow: 
+    0 16px 24px -8px rgba(120, 100, 80, 0.2),
+    0 8px 16px -6px rgba(120, 100, 80, 0.15),
+    0 4px 8px -4px rgba(120, 100, 80, 0.1);
 }
     
     /* ========= MODAL STYLES ========= */
@@ -325,15 +328,15 @@ section#contact .text-center {
 <section id="contact" class="py-20 bg-white bg-opacity-90 relative z-10">
   <div class="max-w-4xl mx-auto px-4">
     <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Contact Support</h2>
-    <div class="warm-shadow rounded-lg p-8 bg-white">
-      <div class="text-center">
-        <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
-        <a href="mailto:Matthewhoytapps@gmail.com" 
-           class="text-white bg-gray-800 px-6 py-3 rounded-lg hover:bg-gray-700 inline-block opacity-100 visible">
-          Email Support
-        </a>
-      </div>
-    </div>
+   <div class="contact-card p-8 bg-white">
+  <div class="text-center">
+    <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
+    <a href="mailto:Matthewhoytapps@gmail.com" 
+       class="text-white bg-gray-800 px-6 py-3 rounded-lg hover:bg-gray-700 inline-block">
+      Email Support
+    </a>
+  </div>
+</div>
   </div>
 </section>
 
