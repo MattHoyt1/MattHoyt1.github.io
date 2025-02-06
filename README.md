@@ -15,9 +15,9 @@ body {
   /* Reversed gradient with purple at bottom, adjusted color stops for smoother transition */
   background: linear-gradient(
     to bottom,
-    #fdf6e3 0%,    /* Light cream color remains at top */
-    #fbe9d7 40%,   /* Warm peachy-brown in middle */
-    #e6d2be 100%   /* Darker warm brown at bottom */
+   #fdf6e3 0%,    /* Light cream at top for brightness */
+    #fbe9d7 40%,   /* Warm peachy-brown for smooth transition */
+    #d4b59c 100%   /* Deeper, richer brown at bottom */
   );
   font-family: 'Helvetica Neue', 'Arial', sans-serif;
   position: relative;
