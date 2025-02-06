@@ -190,8 +190,8 @@ body {
         <a href="#apps" class="hover:text-gray-900 transition">Apps</a>
         <a href="#faq" class="hover:text-gray-900 transition">FAQ</a>
         <a href="#contact" class="hover:text-gray-900 transition">Contact</a>
-        <button onclick="showModal('privacy-modal')" class="hover:text-gray-900 transition">Privacy</button>
-        <button onclick="showModal('terms-modal')" class="hover:text-gray-900 transition">Terms</button>
+        <button onclick="showModal('privacy-modal')" class="hover:text-gray-900 hover:underline transition">Privacy</button>
+        <button onclick="showModal('terms-modal')" class="hover:text-gray-900 hover:underline transition">Terms</button>
       </div>
       <!-- Mobile Menu Button -->
       <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
@@ -321,10 +321,10 @@ body {
     <div class="max-w-4xl mx-auto px-4">
       <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Contact Support</h2>
       <div class="warm-shadow rounded-lg p-8 bg-white">
-        <div class="text-center block">
+        <div class="text-center">
           <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
           <a href="mailto:Matthewhoytapps@gmail.com" 
-             class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition">
+             class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors duration-200">
             Email Support
           </a>
         </div>
