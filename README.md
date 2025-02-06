@@ -308,10 +308,12 @@ body {
     <div class="warm-shadow rounded-lg p-8 bg-white">
       <div class="text-center">
         <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
-<a href="mailto:Matthewhoytapps@gmail.com" 
-   class="block w-fit mx-auto bg-gray-800 hover:bg-gray-700 text-white font-medium px-6 py-3 rounded-lg transition duration-200">
-   Email Support
-</a>
+<div class="relative">
+    <a href="mailto:Matthewhoytapps@gmail.com" 
+       class="relative block w-fit mx-auto bg-gray-800 hover:bg-gray-700 text-white font-medium px-6 py-3 rounded-lg transition duration-200">
+       Email Support
+    </a>
+</div>
       </div>
     </div>
   </div>
