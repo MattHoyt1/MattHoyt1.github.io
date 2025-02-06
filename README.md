@@ -9,30 +9,76 @@
 
   <style>
     /* ========= BACKGROUND & GENERAL LAYOUT ========= */
-    body {
-      margin: 0;
-      background: linear-gradient(to bottom, #FAE2D2, #E6D2BE);
-      font-family: 'Helvetica Neue', 'Arial', sans-serif;
-      position: relative;
-      overflow-x: hidden; /* Prevent horizontal scroll on small shifts */
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #f6d5f7 0%,
+    #fbe9d7 50%,
+    #fdf6e3 100%
+  );
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
 
     /* ========= FLOATING SPECKS CANVAS ========= */
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none; /* Clicks pass through */
-      z-index: 0;           /* Behind all other content */
-    }
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6; /* Subtle transparency for depth */
+}
 
     /* ========= WARM SHADOW UTILITY ========= */
-    .warm-shadow {
-      box-shadow: 0 4px 6px -1px rgba(120, 100, 80, 0.1), 
-                  0 2px 4px -1px rgba(120, 100, 80, 0.06);
-    }
+.warm-shadow {
+  box-shadow: 
+    0 10px 15px -3px rgba(120, 100, 80, 0.1),
+    0 4px 6px -2px rgba(120, 100, 80, 0.05),
+    0 0 0 1px rgba(120, 100, 80, 0.025);
+  transition: all 0.3s ease;
+}
+
+.warm-shadow:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 20px 25px -5px rgba(120, 100, 80, 0.1),
+    0 10px 10px -5px rgba(120, 100, 80, 0.04),
+    0 0 0 1px rgba(120, 100, 80, 0.025);
+}
+
+    
+/* ========= SECTION ENHANCEMENTS ========= */
+section {
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ========= CARD ENHANCEMENTS ========= */
+.modal-content, 
+.rounded-lg {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ========= NAVIGATION ENHANCEMENT ========= */
+nav {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 
+    0 4px 6px -1px rgba(120, 100, 80, 0.1),
+    0 2px 4px -1px rgba(120, 100, 80, 0.06);
+}
 
     /* ========= MODAL STYLES ========= */
     .modal {
