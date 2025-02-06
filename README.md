@@ -12,11 +12,12 @@
 body {
   margin: 0;
   min-height: 100vh;
+  /* Reversed gradient with purple at bottom, adjusted color stops for smoother transition */
   background: linear-gradient(
-    135deg,
-    #f6d5f7 0%,
-    #fbe9d7 50%,
-    #fdf6e3 100%
+    to bottom,
+    #fdf6e3 0%,
+    #fbe9d7 40%,
+    #f6d5f7 100%
   );
   font-family: 'Helvetica Neue', 'Arial', sans-serif;
   position: relative;
@@ -32,24 +33,29 @@ canvas {
   height: 100%;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.6; /* Subtle transparency for depth */
+  opacity: 0.85; /* Increased opacity for visibility */
+  mix-blend-mode: overlay; /* Adds interesting light interaction */
 }
 
     /* ========= WARM SHADOW UTILITY ========= */
 .warm-shadow {
+  /* Multiple shadow layers for depth */
   box-shadow: 
-    0 10px 15px -3px rgba(120, 100, 80, 0.1),
-    0 4px 6px -2px rgba(120, 100, 80, 0.05),
-    0 0 0 1px rgba(120, 100, 80, 0.025);
-  transition: all 0.3s ease;
+    0 16px 24px -8px rgba(120, 100, 80, 0.2),  /* Large soft shadow */
+    0 8px 16px -6px rgba(120, 100, 80, 0.15),  /* Medium shadow */
+    0 4px 8px -4px rgba(120, 100, 80, 0.1),    /* Small sharp shadow */
+    0 0 0 1px rgba(120, 100, 80, 0.05);        /* Outline for definition */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth bounce effect */
+  transform: translateY(0);
 }
 
 .warm-shadow:hover {
-  transform: translateY(-2px);
+  transform: translateY(-8px); /* More pronounced lift on hover */
   box-shadow: 
-    0 20px 25px -5px rgba(120, 100, 80, 0.1),
-    0 10px 10px -5px rgba(120, 100, 80, 0.04),
-    0 0 0 1px rgba(120, 100, 80, 0.025);
+    0 24px 32px -12px rgba(120, 100, 80, 0.25),
+    0 16px 24px -8px rgba(120, 100, 80, 0.15),
+    0 8px 16px -6px rgba(120, 100, 80, 0.1),
+    0 0 0 1px rgba(120, 100, 80, 0.05);
 }
 
     
@@ -57,27 +63,55 @@ canvas {
 section {
   position: relative;
   z-index: 1;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  margin: 2rem 0;
+  padding: 2rem 0;
 }
 
 /* ========= CARD ENHANCEMENTS ========= */
 .modal-content, 
 .rounded-lg {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.9); /* More opaque for better contrast */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
 }
 
 /* ========= NAVIGATION ENHANCEMENT ========= */
 nav {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: 
-    0 4px 6px -1px rgba(120, 100, 80, 0.1),
-    0 2px 4px -1px rgba(120, 100, 80, 0.06);
+    0 8px 16px -4px rgba(120, 100, 80, 0.1),
+    0 4px 8px -4px rgba(120, 100, 80, 0.06);
+}
+
+    
+/* ========= ADDITIONAL CARD HOVER EFFECTS ========= */
+.rounded-lg {
+  position: relative;
+  overflow: hidden;
+}
+
+.rounded-lg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.rounded-lg:hover::before {
+  opacity: 1;
 }
 
     /* ========= MODAL STYLES ========= */
