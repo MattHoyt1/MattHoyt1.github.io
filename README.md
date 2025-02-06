@@ -61,6 +61,21 @@ body {
     0 0 0 1px rgba(120, 100, 80, 0.05);
 }
 
+    #contact .warm-shadow {
+  display: block; /* Ensures the container is always visible */
+}
+
+#contact .text-center {
+  visibility: visible; /* Explicitly set visibility */
+  opacity: 1; /* Ensure full opacity */
+}
+
+#contact a[href^="mailto"] {
+  display: inline-block; /* Maintains button layout while ensuring visibility */
+  visibility: visible;
+  opacity: 1;
+}
+
 /* ========= CARD ENHANCEMENTS ========= */
 .modal-content, 
 .rounded-lg {
@@ -194,11 +209,11 @@ body {
       <a href="#faq" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
       <a href="#contact" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Contact</a>
       <button onclick="showModal('privacy-modal')" 
-              class="block w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">
+              class="block w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 hover:underline">
         Privacy
       </button>
       <button onclick="showModal('terms-modal')" 
-              class="block w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">
+              class="block w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 hover:underline">
         Terms
       </button>
     </div>
@@ -306,7 +321,7 @@ body {
     <div class="max-w-4xl mx-auto px-4">
       <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Contact Support</h2>
       <div class="warm-shadow rounded-lg p-8 bg-white">
-        <div class="text-center">
+        <div class="text-center block">
           <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
           <a href="mailto:Matthewhoytapps@gmail.com" 
              class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition">
