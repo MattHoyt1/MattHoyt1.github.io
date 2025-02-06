@@ -25,18 +25,18 @@ body {
 }
 
     /* ========= FLOATING SPECKS CANVAS ========= */
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 1;
-  mix-blend-mode: screen; /* Changed for better visibility */
-}
-
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 1;
+    mix-blend-mode: screen;
+  }
+    
     /* ========= WARM SHADOW UTILITY ========= */
 .warm-shadow {
   /* Multiple shadow layers for depth */
@@ -60,14 +60,6 @@ canvas {
     0 8px 16px -6px rgba(120, 100, 80, 0.1),
     0 0 0 1px rgba(120, 100, 80, 0.05);
 }
-    
-/* ========= SECTION ENHANCEMENTS ========= */
-section {
-  position: relative;
-  z-index: 1;
-  margin: 2rem 0;
-  padding: 2rem 0;
-}
 
 /* ========= CARD ENHANCEMENTS ========= */
 .modal-content, 
@@ -80,84 +72,41 @@ section {
   position: relative;
   z-index: 1;
 }
-    /* ========= CARD HOVER EFFECT ========= */
-.rounded-lg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.2) 100%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none; /* Ensure clicks pass through */
-  z-index: 1;
-}
-/* ========= NAVIGATION ENHANCEMENT ========= */
-nav {/* ========= CARD HOVER EFFECT ========= */
-.rounded-lg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.2) 100%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none; /* Ensure clicks pass through */
-  z-index: 1;
-}
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 
-    0 8px 16px -4px rgba(120, 100, 80, 0.1),
-    0 4px 8px -4px rgba(120, 100, 80, 0.06);
-  position: relative;
-  z-index: 10; /* Keep nav above other elements */
-}    
-/* ========= ADDITIONAL CARD HOVER EFFECTS ========= */
-.rounded-lg {
-  position: relative;
-  overflow: hidden;
-}
-.rounded-lg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.2) 100%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
 
-.rounded-lg:hover::before {
-  opacity: 1;
-}
+     /* ========= NAVIGATION ENHANCEMENT ========= */
+  nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 
+      0 8px 16px -4px rgba(120, 100, 80, 0.1),
+      0 4px 8px -4px rgba(120, 100, 80, 0.06);
+    position: relative;
+    z-index: 10;
+  }
+    
+    /* ========= CARD HOVER EFFECTS ========= */
+  .rounded-lg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
 
-    /* ========= BUTTON AND LINK ENHANCEMENTS ========= */
-.rounded-lg a,
-.rounded-lg button {
-  position: relative;
-  z-index: 2;
-  cursor: pointer;
-}
+  .rounded-lg:hover::before {
+    opacity: 1;
+  }
 
     /* ========= MODAL STYLES ========= */
     .modal {
@@ -565,8 +514,8 @@ nav {/* ========= CARD HOVER EFFECT ========= */
 
   <!-- ============ JAVASCRIPT ============ -->
   <script>
-    /* ========== FLOATING SPECKS BACKGROUND ========== */
-const canvas = document.getElementById('specks');
+
+       const canvas = document.getElementById('specks');
 const ctx = canvas.getContext('2d');
 
 function resizeCanvas() {
@@ -576,25 +525,63 @@ function resizeCanvas() {
 
 resizeCanvas();
 
-const specks = [];
-const numSpecks = 100; // Increased number for better visual effect
+// Define paths that mimic the reference image pattern
+// Each path is defined as a series of control points for Bezier curves
+const paths = [
+  // Diagonal paths with rounded corners
+  {
+    points: function(t) {
+      const cellSize = 300; // Size of one pattern cell
+      const cornerRadius = 50; // How rounded the corners are
+      
+      // Calculate base position in the grid
+      const gridX = Math.floor(t * canvas.width / cellSize) * cellSize;
+      const gridY = Math.floor(t * canvas.height / cellSize) * cellSize;
+      
+      // Position within current cell
+      const localT = (t * canvas.width) % cellSize / cellSize;
+      
+      // Create diagonal path with rounded corners
+      if (localT < 0.2) {
+        // Round the corner
+        const angle = localT * Math.PI / 0.4;
+        return {
+          x: gridX + cornerRadius * (1 - Math.cos(angle)),
+          y: gridY + cornerRadius * (1 - Math.sin(angle))
+        };
+      } else if (localT < 0.8) {
+        // Diagonal line
+        const progress = (localT - 0.2) / 0.6;
+        return {
+          x: gridX + cornerRadius + progress * (cellSize - 2 * cornerRadius),
+          y: gridY + cornerRadius + progress * (cellSize - 2 * cornerRadius)
+        };
+      } else {
+        // Round the corner
+        const angle = (localT - 0.8) * Math.PI / 0.4 + Math.PI/2;
+        return {
+          x: gridX + cellSize - cornerRadius + cornerRadius * Math.cos(angle),
+          y: gridY + cellSize - cornerRadius + cornerRadius * Math.sin(angle)
+        };
+      }
+    }
+  },
+  // Add more path variations here for the complete pattern
+];
 
-// Create specks with enhanced visibility properties
+// Create specks that will follow the paths
+const specks = [];
+const numSpecks = 150; // Increased number for better coverage of paths
+
 for (let i = 0; i < numSpecks; i++) {
   specks.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    // Create varied sizes for more visual interest
-    radius: Math.random() < 0.2 ? 
-      Math.random() * 4 + 3 : // Large specks (20% chance)
-      Math.random() * 2 + 1.5, // Regular specks (80% chance)
-    speedX: (Math.random() - 0.5) * 0.4, // Increased movement speed
-    speedY: (Math.random() - 0.5) * 0.4,
-    // Each speck gets its own opacity for variety
-    opacity: Math.random() * 0.4 + 0.4, // Range from 0.4 to 0.8
-    // Add pulsing effect
+    pathIndex: Math.floor(Math.random() * paths.length),
+    pathProgress: Math.random(), // Random starting position on path
+    speed: Math.random() * 0.0002 + 0.0001, // Varied speeds for more organic movement
+    radius: Math.random() * 2 + 1, // Slightly smaller for a more delicate look
+    opacity: Math.random() * 0.3 + 0.2, // More subtle opacity
     pulse: Math.random() * Math.PI * 2,
-    pulseSpeed: Math.random() * 0.03 + 0.02
+    pulseSpeed: Math.random() * 0.02 + 0.01
   });
 }
 
@@ -602,63 +589,60 @@ function drawSpecks() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   specks.forEach(speck => {
-    // Update pulse
+    // Update position along path
+    speck.pathProgress += speck.speed;
+    if (speck.pathProgress > 1) {
+      speck.pathProgress = 0;
+      // Optionally switch to a different path
+      speck.pathIndex = Math.floor(Math.random() * paths.length);
+    }
+
+    // Calculate position on path
+    const position = paths[speck.pathIndex].points(speck.pathProgress);
+
+    // Update pulse effect
     speck.pulse += speck.pulseSpeed;
-    
-    // Calculate current opacity with pulsing effect
-    const pulseEffect = Math.sin(speck.pulse) * 0.2;
+    const pulseEffect = Math.sin(speck.pulse) * 0.15;
     const currentOpacity = speck.opacity + pulseEffect;
-    
-    // Draw main speck with gradient for softer edges
+
+    // Draw speck with soft gradient
     const gradient = ctx.createRadialGradient(
-      speck.x, speck.y, 0,
-      speck.x, speck.y, speck.radius * 2
+      position.x, position.y, 0,
+      position.x, position.y, speck.radius * 2
     );
     
-    // Create a more pronounced center
     gradient.addColorStop(0, `rgba(255, 255, 255, ${currentOpacity})`);
     gradient.addColorStop(0.5, `rgba(255, 255, 255, ${currentOpacity * 0.5})`);
     gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
     
     ctx.beginPath();
     ctx.fillStyle = gradient;
-    ctx.arc(speck.x, speck.y, speck.radius * 2.5, 0, Math.PI * 2);
+    ctx.arc(position.x, position.y, speck.radius * 2, 0, Math.PI * 2);
     ctx.fill();
-    
-    // Add a bright center point for larger specks
-    if (speck.radius > 2) {
-      ctx.beginPath();
-      ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity * 1.3})`;
-      ctx.arc(speck.x, speck.y, speck.radius * 0.5, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    
-    // Update position with slight randomization
-    speck.x += speck.speedX + (Math.random() - 0.5) * 0.1;
-    speck.y += speck.speedY + (Math.random() - 0.5) * 0.1;
-    
-    // Wrap around edges
-    if (speck.x < -speck.radius * 2) speck.x = canvas.width + speck.radius;
-    if (speck.x > canvas.width + speck.radius * 2) speck.x = -speck.radius;
-    if (speck.y < -speck.radius * 2) speck.y = canvas.height + speck.radius;
-    if (speck.y > canvas.height + speck.radius * 2) speck.y = -speck.radius;
   });
   
   requestAnimationFrame(drawSpecks);
 }
 
+// Add the SVG pattern for the visible lines
+const svgPattern = `
+<svg width="100%" height="100%" style="position: fixed; top: 0; left: 0; z-index: 0; opacity: 0.1;">
+  <defs>
+    <pattern id="linePattern" x="0" y="0" width="300" height="300" patternUnits="userSpaceOnUse">
+      <path d="M0,0 Q50,50 300,300" fill="none" stroke="currentColor" stroke-width="1"/>
+      <path d="M300,0 Q250,50 0,300" fill="none" stroke="currentColor" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#linePattern)"/>
+</svg>`;
+
+document.body.insertAdjacentHTML('afterbegin', svgPattern);
+
+// Start the animation
 drawSpecks();
 
-window.addEventListener('resize', () => {
-  resizeCanvas();
-  // Reposition some specks on resize for better distribution
-  specks.forEach(speck => {
-    if (Math.random() < 0.5) {
-      speck.x = Math.random() * canvas.width;
-      speck.y = Math.random() * canvas.height;
-    }
-  });
-});
+// Handle window resizing
+window.addEventListener('resize', resizeCanvas);
 
     /* ========== MOBILE MENU TOGGLE ========== */
     const menuBtn = document.getElementById('menu-btn');
