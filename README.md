@@ -33,31 +33,33 @@ canvas {
   height: 100%;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.85; /* Increased opacity for visibility */
-  mix-blend-mode: overlay; /* Adds interesting light interaction */
+  opacity: 1;
+  mix-blend-mode: soft-light; /* Changed for better visibility */
 }
 
     /* ========= WARM SHADOW UTILITY ========= */
 .warm-shadow {
   /* Multiple shadow layers for depth */
   box-shadow: 
-    0 16px 24px -8px rgba(120, 100, 80, 0.2),  /* Large soft shadow */
-    0 8px 16px -6px rgba(120, 100, 80, 0.15),  /* Medium shadow */
-    0 4px 8px -4px rgba(120, 100, 80, 0.1),    /* Small sharp shadow */
-    0 0 0 1px rgba(120, 100, 80, 0.05);        /* Outline for definition */
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth bounce effect */
+    0 16px 24px -8px rgba(120, 100, 80, 0.2),
+    0 8px 16px -6px rgba(120, 100, 80, 0.15),
+    0 4px 8px -4px rgba(120, 100, 80, 0.1),
+    0 0 0 1px rgba(120, 100, 80, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform: translateY(0);
+  /* Ensure proper stacking context without breaking clicks */
+  position: relative;
+  z-index: 1;
 }
 
 .warm-shadow:hover {
-  transform: translateY(-8px); /* More pronounced lift on hover */
+  transform: translateY(-8px);
   box-shadow: 
     0 24px 32px -12px rgba(120, 100, 80, 0.25),
     0 16px 24px -8px rgba(120, 100, 80, 0.15),
     0 8px 16px -6px rgba(120, 100, 80, 0.1),
     0 0 0 1px rgba(120, 100, 80, 0.05);
 }
-
     
 /* ========= SECTION ENHANCEMENTS ========= */
 section {
@@ -70,21 +72,65 @@ section {
 /* ========= CARD ENHANCEMENTS ========= */
 .modal-content, 
 .rounded-lg {
-  background: rgba(255, 255, 255, 0.9); /* More opaque for better contrast */
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.5);
+  /* Ensure proper stacking without breaking clicks */
   position: relative;
+  z-index: 1;
 }
 
+    /* ========= CARD HOVER EFFECT ========= */
+.rounded-lg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* Ensure clicks pass through */
+  z-index: 1;
+}
+
+
+
 /* ========= NAVIGATION ENHANCEMENT ========= */
-nav {
+nav {/* ========= CARD HOVER EFFECT ========= */
+.rounded-lg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* Ensure clicks pass through */
+  z-index: 1;
+}
+
+
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 
     0 8px 16px -4px rgba(120, 100, 80, 0.1),
     0 4px 8px -4px rgba(120, 100, 80, 0.06);
+  position: relative;
+  z-index: 10; /* Keep nav above other elements */
 }
 
     
@@ -114,8 +160,17 @@ nav {
   opacity: 1;
 }
 
+    /* ========= BUTTON AND LINK ENHANCEMENTS ========= */
+.rounded-lg a,
+.rounded-lg button {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
     /* ========= MODAL STYLES ========= */
     .modal {
+      z-index: 50;
       display: none;
       position: fixed;
       inset: 0; /* top:0, left:0, right:0, bottom:0 */
@@ -128,6 +183,7 @@ nav {
       display: flex; /* Show the modal */
     }
     .modal-content {
+      z-index: 51;
       background: white;
       padding: 2rem;
       width: 90%;
