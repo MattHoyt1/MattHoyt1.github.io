@@ -277,6 +277,35 @@ section#contact .text-center {
             Learn More
           </button>
         </div>
+        <!-- Mindful Minutes Card -->
+        <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Bormes Apartment</h3>
+          <p class="text-gray-600 mb-4">
+            Bormes Les Mimosas apartment assistant
+          </p>
+          <button onclick="showModal('Bormes-modal')" class="text-blue-600 hover:underline">
+            Learn More
+          </button>
+        </div>
+        <!-- Mindful Minutes Card -->
+        <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Gift Ideas</h3>
+          <p class="text-gray-600 mb-4">
+            Simply transforms a common problem into a seamless experience
+          </p>
+          <button onclick="showModal('Gift modal')" class="text-blue-600 hover:underline">
+            Learn More
+          </button>
+        </div>
+         <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Jenfie</h3>
+          <p class="text-gray-600 mb-4">
+            Dejlig app for dejlig people
+          </p>
+          <button onclick="showModal('Jenfie modal')" class="text-blue-600 hover:underline">
+            Learn More
+          </button>
+        </div>
       </div>
     </div>
   </section>
