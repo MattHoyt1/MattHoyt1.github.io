@@ -277,7 +277,7 @@ section#contact .text-center {
             Learn More
           </button>
         </div>
-        <!-- Mindful Minutes Card -->
+        <!-- Bormes Card -->
         <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
           <h3 class="text-xl font-semibold text-gray-800 mb-2">Bormes Apartment</h3>
           <p class="text-gray-600 mb-4">
@@ -287,22 +287,13 @@ section#contact .text-center {
             Learn More
           </button>
         </div>
-        <!-- Mindful Minutes Card -->
+        <!-- Gift Card -->
         <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
           <h3 class="text-xl font-semibold text-gray-800 mb-2">Gift Ideas</h3>
           <p class="text-gray-600 mb-4">
             Simply transforms a common problem into a seamless experience
           </p>
-          <button onclick="showModal('Gift modal')" class="text-blue-600 hover:underline">
-            Learn More
-          </button>
-        </div>
-         <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Jenfie</h3>
-          <p class="text-gray-600 mb-4">
-            Dejlig app for dejlig people
-          </p>
-          <button onclick="showModal('Jenfie modal')" class="text-blue-600 hover:underline">
+          <button onclick="showModal('Gift-modal')" class="text-blue-600 hover:underline">
             Learn More
           </button>
         </div>
@@ -343,6 +334,47 @@ section#contact .text-center {
       </p>
     </div>
   </div>
+
+    <!-- ============ Bormes MODAL ============ -->
+  <div id="Bormes-modal" class="modal">
+    <div class="modal-content warm-shadow">
+      <span class="close-button" onclick="hideModal('Bormes-modal')">&times;</span>
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">Bormes Les Mimosas</h2>
+      <p class="text-gray-600 leading-relaxed">
+        Technology should amplify the best parts of life—not complicate them. And that’s exactly what this app does. It’s not just another travel app. It’s a beautifully designed, intuitive gateway to one of the most breathtaking places on Earth—Bormes-les-Mimosas.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-4">
+        With just a few taps, you’re immersed in the charm of the village, its hidden gems, and its stunning landscapes. The app doesn’t just give you information—it guides you, it inspires you, and it helps you experience the magic of this place in a way that feels effortless.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-4">
+       It’s elegant. It’s seamless. And it just works. That’s what great technology is all about.
+      </p>
+    </div>
+  </div>
+
+   <!-- ============ Gift MODAL ============ -->
+  <div id="Gift-modal" class="modal">
+    <div class="modal-content warm-shadow">
+      <span class="close-button" onclick="hideModal('Gift-modal')">&times;</span>
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">Gift Ideas</h2>
+      <p class="text-gray-600 leading-relaxed">
+       We’ve all been there. A birthday, an anniversary, or the holidays are coming up, and you find yourself staring at a blank screen, thinking: What do I get them?
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-4">
+        That’s a problem. And great technology solves problems.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-4">
+      This app doesn’t just give you random gift ideas—it understands the person you’re shopping for. It learns from preferences, occasions, and even subtle hints, and then—like magic—it surfaces the perfect gift. No more endless searching, no more last-minute panic.
+      </p>
+       <p class="text-gray-600 leading-relaxed mt-4">
+     It’s simple. It’s thoughtful. And it just works.
+      </p>
+       <p class="text-gray-600 leading-relaxed mt-4">
+      Because at the heart of it, gift-giving isn’t about the thing—it’s about the feeling. This app helps you give something that truly matters.
+      </p>
+    </div>
+  </div>
+
 
   <!-- ============ FAQ SECTION ============ -->
   <section id="faq" class="py-20 relative z-10">
