@@ -287,6 +287,26 @@ section#contact .text-center {
             Learn More
           </button>
         </div>
+         <!-- Danish Slang Card -->
+        <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Danish Slang Quiz</h3>
+          <p class="text-gray-600 mb-4">
+            Test your knowledge of Danish Slang and Idioms
+          </p>
+          <button onclick="showModal('Slang-modal')" class="text-blue-600 hover:underline">
+            Learn More
+          </button>
+        </div>
+         <!-- Call Tracking Card -->
+        <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Call Tracking</h3>
+          <p class="text-gray-600 mb-4">
+            Get notifications to make those important calls
+          </p>
+          <button onclick="showModal('Tracking-modal')" class="text-blue-600 hover:underline">
+            Learn More
+          </button>
+        </div>
         <!-- Gift Card -->
         <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
           <h3 class="text-xl font-semibold text-gray-800 mb-2">Gift Ideas</h3>
@@ -348,6 +368,44 @@ section#contact .text-center {
       </p>
       <p class="text-gray-600 leading-relaxed mt-4">
        It’s elegant. It’s seamless. And it just works. That’s what great technology is all about.
+      </p>
+    </div>
+  </div>
+
+      <!-- ============ Slang MODAL ============ -->
+  <div id="Slang-modal" class="modal">
+    <div class="modal-content warm-shadow">
+      <span class="close-button" onclick="hideModal('Bormes-modal')">&times;</span>
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">Danish Slang Quiz</h2>
+      <p class="text-gray-600 leading-relaxed">
+        Language isn’t just about words—it’s about culture, personality, and expression. And in Denmark, nothing captures that better than its rich, quirky slang.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-4">
+       With the Danish Slang Quiz, we’ve created a revolutionary way to not just learn Danish—but to think Danish. It’s fun. It’s unpredictable. And it challenges you to go beyond the textbook and speak like a local.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-4">
+       Choose your level. Step into the game. And see how many you can get right—before the language gets you.
+
+This isn’t just a quiz. It’s an experience. And it’s going to transform the way you connect with Denmark. One idiom at a time.
+      </p>
+    </div>
+  </div>
+
+        <!-- ============ Tracking MODAL ============ -->
+  <div id="Tracking-modal" class="modal">
+    <div class="modal-content warm-shadow">
+      <span class="close-button" onclick="hideModal('Bormes-modal')">&times;</span>
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">Call Tracking</h2>
+      <p class="text-gray-600 leading-relaxed">
+        Staying connected is everything. But life gets busy. Days turn into weeks, weeks into months, and before you know it—you’ve lost touch with the people who matter most.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-4">
+      Introducing the Call Tracking App, a beautifully simple way to never forget to check in again. It remembers the last time you called someone and gently reminds you when it's time to reach out. No spreadsheets, no mental notes—just seamless, thoughtful connection. Want to call your best friend every two weeks? Done. Need to follow up with a client every month? Easy. It’s your relationships, your way, effortlessly managed.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-4">
+       This isn’t just a reminder app. It’s about being present. It’s about showing up. And it’s about making sure that no important connection ever fades away again.
+
+Because the best calls are the ones you never forget to make.
       </p>
     </div>
   </div>
