@@ -375,7 +375,7 @@ section#contact .text-center {
       <!-- ============ Slang MODAL ============ -->
   <div id="Slang-modal" class="modal">
     <div class="modal-content warm-shadow">
-      <span class="close-button" onclick="hideModal('Bormes-modal')">&times;</span>
+      <span class="close-button" onclick="hideModal('Slang-modal')">&times;</span>
       <h2 class="text-3xl font-bold text-gray-800 mb-4">Danish Slang Quiz</h2>
       <p class="text-gray-600 leading-relaxed">
         Language isn’t just about words—it’s about culture, personality, and expression. And in Denmark, nothing captures that better than its rich, quirky slang.
@@ -394,7 +394,7 @@ This isn’t just a quiz. It’s an experience. And it’s going to transform th
         <!-- ============ Tracking MODAL ============ -->
   <div id="Tracking-modal" class="modal">
     <div class="modal-content warm-shadow">
-      <span class="close-button" onclick="hideModal('Bormes-modal')">&times;</span>
+      <span class="close-button" onclick="hideModal('Tracking-modal')">&times;</span>
       <h2 class="text-3xl font-bold text-gray-800 mb-4">Call Tracking</h2>
       <p class="text-gray-600 leading-relaxed">
         Staying connected is everything. But life gets busy. Days turn into weeks, weeks into months, and before you know it—you’ve lost touch with the people who matter most.
