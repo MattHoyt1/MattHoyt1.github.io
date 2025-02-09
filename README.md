@@ -287,13 +287,13 @@ section#contact .text-center {
             Learn More
           </button>
         </div>
-         <!-- Danish Slang Card -->
+         <!-- Danish Idioms Card -->
         <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Danish Slang Quiz</h3>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Danish Idioms Quiz</h3>
           <p class="text-gray-600 mb-4">
-            Test your knowledge of Danish Slang and Idioms
+            Test your knowledge of Danish Idioms and Slang
           </p>
-          <button onclick="showModal('Slang-modal')" class="text-blue-600 hover:underline">
+          <button onclick="showModal('Idioms-modal')" class="text-blue-600 hover:underline">
             Learn More
           </button>
         </div>
@@ -372,16 +372,16 @@ section#contact .text-center {
     </div>
   </div>
 
-      <!-- ============ Slang MODAL ============ -->
-  <div id="Slang-modal" class="modal">
+      <!-- ============ Idioms MODAL ============ -->
+  <div id="Idioms-modal" class="modal">
     <div class="modal-content warm-shadow">
-      <span class="close-button" onclick="hideModal('Slang-modal')">&times;</span>
-      <h2 class="text-3xl font-bold text-gray-800 mb-4">Danish Slang Quiz</h2>
+      <span class="close-button" onclick="hideModal('Idioms-modal')">&times;</span>
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">Danish Idioms Quiz</h2>
       <p class="text-gray-600 leading-relaxed">
         Language isn’t just about words—it’s about culture, personality, and expression. And in Denmark, nothing captures that better than its rich, quirky slang.
       </p>
       <p class="text-gray-600 leading-relaxed mt-4">
-       With the Danish Slang Quiz, we’ve created a revolutionary way to not just learn Danish—but to think Danish. It’s fun. It’s unpredictable. And it challenges you to go beyond the textbook and speak like a local.
+       With the Danish Idioms Quiz, we’ve created a revolutionary way to not just learn Danish—but to think Danish. It’s fun. It’s unpredictable. And it challenges you to go beyond the textbook and speak like a local.
       </p>
       <p class="text-gray-600 leading-relaxed mt-4">
        Choose your level. Step into the game. And see how many you can get right—before the language gets you.
