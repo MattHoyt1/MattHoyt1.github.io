@@ -297,13 +297,13 @@ section#contact .text-center {
             Learn More
           </button>
         </div>
-         <!-- Call Tracking Card -->
+         <!-- Ring Log Card -->
         <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Call Tracking</h3>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Ring Log</h3>
           <p class="text-gray-600 mb-4">
             Get notifications to make those important calls
           </p>
-          <button onclick="showModal('Tracking-modal')" class="text-blue-600 hover:underline">
+          <button onclick="showModal('RingLog-modal')" class="text-blue-600 hover:underline">
             Learn More
           </button>
         </div>
@@ -391,16 +391,16 @@ This isn’t just a quiz. It’s an experience. And it’s going to transform th
     </div>
   </div>
 
-        <!-- ============ Tracking MODAL ============ -->
-  <div id="Tracking-modal" class="modal">
+        <!-- ============ Ring Log MODAL ============ -->
+  <div id="RingLog-modal" class="modal">
     <div class="modal-content warm-shadow">
-      <span class="close-button" onclick="hideModal('Tracking-modal')">&times;</span>
-      <h2 class="text-3xl font-bold text-gray-800 mb-4">Call Tracking</h2>
+      <span class="close-button" onclick="hideModal('RingLog-modal')">&times;</span>
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">Ring Log</h2>
       <p class="text-gray-600 leading-relaxed">
         Staying connected is everything. But life gets busy. Days turn into weeks, weeks into months, and before you know it—you’ve lost touch with the people who matter most.
       </p>
       <p class="text-gray-600 leading-relaxed mt-4">
-      Introducing the Call Tracking App, a beautifully simple way to never forget to check in again. It remembers the last time you called someone and gently reminds you when it's time to reach out. No spreadsheets, no mental notes—just seamless, thoughtful connection. Want to call your best friend every two weeks? Done. Need to follow up with a client every month? Easy. It’s your relationships, your way, effortlessly managed.
+      Introducing the Ring Log App, a beautifully simple way to never forget to check in again. It remembers the last time you called someone and gently reminds you when it's time to reach out. No spreadsheets, no mental notes—just seamless, thoughtful connection. Want to call your best friend every two weeks? Done. Need to follow up with a client every month? Easy. It’s your relationships, your way, effortlessly managed.
       </p>
       <p class="text-gray-600 leading-relaxed mt-4">
        This isn’t just a reminder app. It’s about being present. It’s about showing up. And it’s about making sure that no important connection ever fades away again.
