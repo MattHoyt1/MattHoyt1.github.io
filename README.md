@@ -391,25 +391,29 @@ This isn’t just a quiz. It’s an experience. And it’s going to transform th
     </div>
   </div>
 
-        <!-- ============ Ring Log MODAL ============ -->
-  <div id="RingLog-modal" class="modal">
-    <div class="modal-content warm-shadow">
-      <span class="close-button" onclick="hideModal('RingLog-modal')">&times;</span>
-      <h2 class="text-3xl font-bold text-gray-800 mb-4">Ring Log</h2>
-      <p class="text-gray-600 leading-relaxed">
-        Staying connected is everything. But life gets busy. Days turn into weeks, weeks into months, and before you know it—you’ve lost touch with the people who matter most.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-4">
+  <!-- ============ Ring Log MODAL ============ -->
+<div id="RingLog-modal" class="modal">
+  <div class="modal-content warm-shadow">
+    <span class="close-button" onclick="hideModal('RingLog-modal')">&times;</span>
+    <h2 class="text-3xl font-bold text-gray-800 mb-4">Ring Log</h2>
+    <p class="text-gray-600 leading-relaxed">
+      Staying connected is everything. But life gets busy. Days turn into weeks, weeks into months, and before you know it—you’ve lost touch with the people who matter most.
+    </p>
+    <p class="text-gray-600 leading-relaxed mt-4">
       Introducing the Ring Log App, a beautifully simple way to never forget to check in again. It remembers the last time you called someone and gently reminds you when it's time to reach out. No spreadsheets, no mental notes—just seamless, thoughtful connection. Want to call your best friend every two weeks? Done. Need to follow up with a client every month? Easy. It’s your relationships, your way, effortlessly managed.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-4">
-       This isn’t just a reminder app. It’s about being present. It’s about showing up. And it’s about making sure that no important connection ever fades away again.
-
-Because the best calls are the ones you never forget to make.
-https://apps.apple.com/us/app/ringlog/id6741731973
-      </p>
-    </div>
+    </p>
+    <p class="text-gray-600 leading-relaxed mt-4">
+      This isn’t just a reminder app. It’s about being present. It’s about showing up. And it’s about making sure that no important connection ever fades away again.
+      <br><br>
+      Because the best calls are the ones you never forget to make.
+      <br>
+      <a href="https://apps.apple.com/us/app/ringlog/id6741731973" target="_blank" class="text-blue-500 hover:underline">
+        https://apps.apple.com/us/app/ringlog/id6741731973
+      </a>
+    </p>
   </div>
+</div>
+
 
    <!-- ============ Gift MODAL ============ -->
   <div id="Gift-modal" class="modal">
