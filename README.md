@@ -406,6 +406,7 @@ This isn’t just a quiz. It’s an experience. And it’s going to transform th
        This isn’t just a reminder app. It’s about being present. It’s about showing up. And it’s about making sure that no important connection ever fades away again.
 
 Because the best calls are the ones you never forget to make.
+https://apps.apple.com/us/app/ringlog/id6741731973
       </p>
     </div>
   </div>
