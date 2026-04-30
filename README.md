@@ -1,856 +1,1193 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Matthew Hoyt App Support</title>
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
+  <title>Matthew Hoyt — App Support</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    /* ========= BACKGROUND & GENERAL LAYOUT ========= */
-body {
-  margin: 0;
-  min-height: 100vh;
-  /* Reversed gradient with purple at bottom, adjusted color stops for smoother transition */
-  background: linear-gradient(
-    to bottom,
-   #fdf6e3 0%,    /* Light cream at top for brightness */
-    #fbe9d7 40%,   /* Warm peachy-brown for smooth transition */
-    #d4b59c 100%   /* Deeper, richer brown at bottom */
-  );
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
-  position: relative;
-  overflow-x: hidden;
-}
-
-    /* ========= FLOATING SPECKS CANVAS ========= */
-  canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 1;
-    mix-blend-mode: screen;
-  }
-    
-    /* ========= WARM SHADOW UTILITY ========= */
-.warm-shadow {
-  /* Multiple shadow layers for depth */
-  box-shadow: 
-    0 16px 24px -8px rgba(120, 100, 80, 0.2),
-    0 8px 16px -6px rgba(120, 100, 80, 0.15),
-    0 4px 8px -4px rgba(120, 100, 80, 0.1),
-    0 0 0 1px rgba(120, 100, 80, 0.05);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transform: translateY(0);
-  /* Ensure proper stacking context without breaking clicks */
-  position: relative;
-  z-index: 1;
-}
-
-.warm-shadow:hover {
-  transform: translateY(-8px);
-  box-shadow: 
-    0 24px 32px -12px rgba(120, 100, 80, 0.25),
-    0 16px 24px -8px rgba(120, 100, 80, 0.15),
-    0 8px 16px -6px rgba(120, 100, 80, 0.1),
-    0 0 0 1px rgba(120, 100, 80, 0.05);
-}
-
-    /* Ensure email button is always visible */
-section#contact a[href^="mailto"] {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: inline-block !important;
-  color: white !important;
-}
-
-/* Ensure the button's container is visible */
-section#contact .text-center {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* ========= CARD ENHANCEMENTS ========= */
-.modal-content, 
-.rounded-lg {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  position: relative;
-  z-index: 1;
-}
-
-     /* ========= NAVIGATION ENHANCEMENT ========= */
-  nav {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 
-      0 8px 16px -4px rgba(120, 100, 80, 0.1),
-      0 4px 8px -4px rgba(120, 100, 80, 0.06);
-    position: relative;
-    z-index: 10;
-  }
-    
-    /* ========= CARD HOVER EFFECTS ========= */
-.rounded-lg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.2) 100%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  /* Change z-index to be behind the content */
-  z-index: 0;
-}
-
-.rounded-lg:hover::before {
-  opacity: 1;
-}
-
-/* Add new style to ensure content stays above the hover effect */
-.rounded-lg > * {
-  position: relative;
-  z-index: 2;
-}
-
-
-    .email-support-button {
-    /* Display properties */
-    display: inline-block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    
-    /* Styling */
-    background-color: #1f2937 !important; /* bg-gray-800 equivalent */
-    color: white !important;
-    padding: 0.75rem 1.5rem !important; /* px-6 py-3 equivalent */
-    border-radius: 0.5rem !important; /* rounded-lg equivalent */
-    
-    /* Remove any transitions temporarily */
-    transition: none !important;
-    
-    /* Ensure proper stacking */
-    position: relative !important;
-    z-index: 5 !important;
-}
-
-/* Separate hover styles */
-.email-support-button:hover {
-    background-color: #374151 !important; /* bg-gray-700 equivalent */
-}
-    
-    /* ========= MODAL STYLES ========= */
-    .modal {
-      z-index: 50;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink: #0f0e0d;
+      --ink-2: #3a3632;
+      --ink-3: #8a847d;
+      --cream: #faf7f2;
+      --warm: #f0ebe2;
+      --warm-2: #e0d9ce;
+      --accent: #c9603a;
+      --accent-light: #f5ede8;
+      --gold: #c4a35a;
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: transparent;
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+    /* ─── BACKGROUND SYSTEM ─── */
+    /* The page scrolls over a fixed gradient+lines+specks backdrop.
+       Light sections are transparent so the backdrop shows through.
+       Dark sections (hero, faq, footer) have their own solid bg. */
+    html {
+      /* The gradient lives on html so it scrolls with the page height,
+         giving a top-light → bottom-dark effect as you scroll */
+      background: linear-gradient(
+        to bottom,
+        #fdf6e3 0%,
+        #f5e6d0 25%,
+        #e8d0b5 55%,
+        #d4b59c 80%,
+        #c4a08a 100%
+      );
+    }
+    body { background: transparent; }
+    /* Diagonal line pattern — fixed, always behind content */
+    #diag-lines {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      opacity: 0.13;
+    }
+    #diag-lines svg { width: 100%; height: 100%; }
+    /* Specks canvas — fixed, above lines, below content */
+    #specks {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      mix-blend-mode: screen;
+    }
+    /* All page content sits above the backdrop */
+    nav, section, footer, .modal-overlay { position: relative; z-index: 2; }
+    /* Light sections: transparent bg so gradient shows through */
+    #apps    { background: transparent; }
+    #contact { background: transparent; }
+    /* Dark sections keep their solid backgrounds */
+    .hero { background: var(--ink); }
+    #faq  { background: var(--ink); }
+    footer { background: var(--ink); }
+    /* Cards on transparent sections need their own white bg */
+    .app-card { background: rgba(255,255,255,0.82); backdrop-filter: blur(8px); }
+    .contact-card { background: rgba(255,255,255,0.82); backdrop-filter: blur(8px); }
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(250, 247, 242, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(160, 140, 120, 0.15);
+      transition: background 0.3s;
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a, .nav-links button {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--ink-2);
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links button:hover { color: var(--accent); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--ink);
+      transition: all 0.3s;
+    }
+    .mobile-nav {
       display: none;
       position: fixed;
-      inset: 0; /* top:0, left:0, right:0, bottom:0 */
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 50; /* Above normal content, below canvas is z-index:0 */
+      top: 64px; left: 0; right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--warm-2);
+      padding: 1.5rem 2rem;
+      z-index: 99;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a, .mobile-nav button {
+      font-size: 0.9rem;
+      color: var(--ink-2);
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 6vw;
+      padding-top: 64px;
+      position: relative;
+      overflow: hidden;
+      background: var(--ink);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,96,58,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(196,163,90,0.1) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-left {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      color: #faf7f2;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(250,247,242,0.55);
+      line-height: 1.7;
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--accent);
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 1.75rem;
+      border-radius: 100px;
+      transition: all 0.25s;
+    }
+    .hero-cta:hover {
+      background: #b85530;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(201,96,58,0.35);
+    }
+    .hero-cta svg { width: 14px; height: 14px; }
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-orb {
+      width: clamp(260px, 35vw, 420px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(201,96,58,0.5), rgba(196,163,90,0.2) 50%, transparent 70%);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .modal.active {
-      display: flex; /* Show the modal */
-    }
-    .modal-content {
-      z-index: 51;
-      background: white;
-      padding: 2rem;
-      width: 90%;
-      max-width: 800px;
-      max-height: 90vh;
-      overflow-y: auto;
-      border-radius: 0.5rem;
       position: relative;
-      animation: fadeIn 0.3s ease-out;
+      animation: float 6s ease-in-out infinite;
     }
-    .close-button {
+    .hero-orb::before {
+      content: '';
       position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 1.5rem;
+      inset: 20px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-orb-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      color: rgba(250,247,242,0.15);
+      text-align: center;
+      line-height: 1;
+      user-select: none;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-16px); }
+    }
+    .hero-stats {
+      position: absolute;
+      bottom: 3rem;
+      left: 6vw;
+      right: 6vw;
+      display: flex;
+      gap: 3rem;
+      z-index: 1;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 2rem;
+    }
+    .stat-item { }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--cream);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(250,247,242,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.25rem;
+    }
+    /* ─── SECTION LABELS ─── */
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--warm-2);
+      max-width: 60px;
+    }
+    /* ─── APPS SECTION ─── */
+    #apps {
+      padding: 8rem 6vw;
+      background: transparent;
+    }
+    .section-header {
+      margin-bottom: 4rem;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .section-desc {
+      font-size: 1rem;
+      color: var(--ink-3);
+      max-width: 480px;
+      line-height: 1.7;
+    }
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .app-card {
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: var(--radius);
+      padding: 2rem;
       cursor: pointer;
-      color: gray;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
     }
-    .close-button:hover {
-      color: black;
+    .app-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.35s;
     }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
+    .app-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px rgba(15,14,13,0.12);
+      border-color: transparent;
+    }
+    .app-card:hover::before { opacity: 1; }
+    /* Card accent colors */
+    .card-hygge { --card-accent: #c9603a; --card-bg: #fdf1ec; }
+    .card-bormes { --card-accent: #2a6eb5; --card-bg: #eef4fb; }
+    .card-danish { --card-accent: #b33535; --card-bg: #faeaea; }
+    .card-ring { --card-accent: #3a8c5c; --card-bg: #eaf4ee; }
+    .card-gift { --card-accent: #7a55b5; --card-bg: #f3eefb; }
+    .app-card::before {
+      background: linear-gradient(135deg, var(--card-bg), white);
+    }
+    .app-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+    .app-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .app-card-meta { flex: 1; }
+    .app-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+    .app-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--card-accent);
+      background: var(--card-bg);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      display: inline-block;
+    }
+    .app-desc {
+      font-size: 0.9rem;
+      color: var(--ink-3);
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+    .app-arrow {
+      color: var(--card-accent);
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+    .app-card:hover .app-arrow { transform: translate(3px, -3px); }
+    /* ─── FAQ ─── */
+    #faq {
+      padding: 8rem 6vw;
+      background: var(--ink);
+      color: var(--cream);
+    }
+    #faq .section-label { color: rgba(250,247,242,0.35); }
+    #faq .section-label::after { background: rgba(255,255,255,0.1); }
+    #faq .section-title { color: var(--cream); }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+    .faq-item {
+      background: var(--ink);
+      padding: 2.5rem;
+      transition: background 0.25s;
+    }
+    .faq-item:hover { background: #1a1917; }
+    .faq-q {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .faq-a {
+      font-size: 0.9rem;
+      color: rgba(250,247,242,0.5);
+      line-height: 1.7;
+    }
+    .faq-a button {
+      color: var(--gold);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      padding: 0;
+      text-decoration: underline;
+      text-decoration-color: rgba(196,163,90,0.4);
+      text-underline-offset: 2px;
+    }
+    /* ─── CONTACT ─── */
+    #contact {
+      padding: 8rem 6vw;
+      background: transparent;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .contact-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .contact-sub {
+      font-size: 1rem;
+      color: var(--ink-3);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .contact-email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--ink);
+      color: var(--cream);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      border-radius: 100px;
+      transition: all 0.25s;
+    }
+    .contact-email-link:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(201,96,58,0.3);
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+    }
+    .contact-card-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 0.5rem;
+    }
+    .contact-card-email {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .contact-card-note {
+      font-size: 0.85rem;
+      color: var(--ink-3);
+      line-height: 1.6;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--warm-2);
+    }
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      color: rgba(250,247,242,0.35);
+      padding: 2rem 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+    footer .foot-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: rgba(250,247,242,0.6);
+    }
+    footer .foot-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    footer button {
+      background: none;
+      border: none;
+      color: rgba(250,247,242,0.35);
+      font-size: 0.8rem;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    footer button:hover { color: var(--gold); }
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15,14,13,0.7);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: rgba(250,247,242,0.96);
+      border-radius: var(--radius);
+      padding: 3rem;
+      width: 100%;
+      max-width: 680px;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      animation: modalIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.96) translateY(8px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--warm);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-3);
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .modal-close:hover { background: var(--warm-2); color: var(--ink); }
+    .modal-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .modal-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+    }
+    .modal-body p {
+      font-size: 0.95rem;
+      color: var(--ink-2);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .modal-body h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .modal-body ul {
+      padding-left: 1.2rem;
+    }
+    .modal-body li {
+      font-size: 0.9rem;
+      color: var(--ink-2);
+      line-height: 1.8;
+      margin-bottom: 0.4rem;
+    }
+    .modal-link {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .modal-link:hover { text-decoration: underline; }
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 100px 6vw 180px;
+        text-align: center;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      .hero-eyebrow { justify-content: center; }
+      .hero-sub { margin: 0 auto 2.5rem; }
+      .hero-right { display: none; }
+      .hero-stats { flex-wrap: wrap; gap: 2rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .faq-grid { grid-template-columns: 1fr; }
+      #contact { grid-template-columns: 1fr; gap: 3rem; }
+      .apps-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .modal-box { padding: 2rem 1.5rem; }
+      #faq { padding: 5rem 5vw; }
+      #apps { padding: 5rem 5vw; }
+      #contact { padding: 5rem 5vw; }
     }
   </style>
 </head>
 <body>
-  <!-- ============ FLOATING SPECKS BACKGROUND ============ -->
-  <canvas id="specks"></canvas>
-
-  <!-- ============ NAVIGATION ============ -->
-  <nav class="bg-white bg-opacity-90 shadow-md sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center py-4">
-      <!-- Logo / Title -->
-      <div class="text-2xl font-bold text-gray-700">
-        Matthew Hoyt
-      </div>
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex space-x-6">
-        <a href="#home" class="hover:text-gray-900 transition">Home</a>
-        <a href="#apps" class="hover:text-gray-900 transition">Apps</a>
-        <a href="#faq" class="hover:text-gray-900 transition">FAQ</a>
-        <a href="#contact" class="hover:text-gray-900 transition">Contact</a>
-        <button onclick="showModal('privacy-modal')" class="hover:text-gray-900 hover:underline transition">Privacy</button>
-        <button onclick="showModal('terms-modal')" class="hover:text-gray-900 hover:underline transition">Terms</button>
-      </div>
-      <!-- Mobile Menu Button -->
-      <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" 
-             viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>
-      </button>
-    </div>
-    <!-- Mobile Menu (hidden by default) -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white bg-opacity-90">
-      <a href="#home" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Home</a>
-      <a href="#apps" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Apps</a>
-      <a href="#faq" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
-      <a href="#contact" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Contact</a>
-      <button onclick="showModal('privacy-modal')" 
-              class="block w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 hover:underline">
-        Privacy
-      </button>
-      <button onclick="showModal('terms-modal')" 
-              class="block w-full text-left py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 hover:underline">
-        Terms
-      </button>
-    </div>
-  </nav>
-
-  <!-- ============ HERO SECTION ============ -->
-  <section id="home" class="py-20 text-center relative z-10">
-    <div class="max-w-6xl mx-auto px-4">
-      <h1 class="text-4xl font-bold text-gray-800 drop-shadow-sm mb-4">
-        App Support Center
-      </h1>
-      <p class="text-xl text-gray-600">
-        Find help and information for all Matthew Hoyt apps
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ APPS SECTION ============ -->
-  <section id="apps" class="py-20 bg-white bg-opacity-90 relative z-10">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Our Apps</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Example App Card -->
-        <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Hygge Detector</h3>
-          <p class="text-gray-600 mb-4">
-            Discover the coziness in your space with AI-powered analysis.
-          </p>
-          <button onclick="showModal('learn-more-modal')" class="text-blue-600 hover:underline">
-            Learn More
-          </button>
-        </div>
-        <!-- Bormes Card -->
-        <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Bormes Apartment</h3>
-          <p class="text-gray-600 mb-4">
-            Bormes Les Mimosas apartment assistant
-          </p>
-          <button onclick="showModal('Bormes-modal')" class="text-blue-600 hover:underline">
-            Learn More
-          </button>
-        </div>
-         <!-- Danish Idioms Card -->
-        <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Danish Idioms Quiz</h3>
-          <p class="text-gray-600 mb-4">
-            Test your knowledge of Danish Idioms and Slang
-          </p>
-          <button onclick="showModal('Idioms-modal')" class="text-blue-600 hover:underline">
-            Learn More
-          </button>
-        </div>
-         <!-- Ring Log Card -->
-        <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Ring Log</h3>
-          <p class="text-gray-600 mb-4">
-            Get notifications to make those important calls
-          </p>
-          <button onclick="showModal('RingLog-modal')" class="text-blue-600 hover:underline">
-            Learn More
-          </button>
-        </div>
-        <!-- Gift Card -->
-        <div class="warm-shadow rounded-lg p-6 bg-white transition hover:shadow-xl">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Gift Ideas</h3>
-          <p class="text-gray-600 mb-4">
-            Simply transforms a common problem into a seamless experience
-          </p>
-          <button onclick="showModal('Gift-modal')" class="text-blue-600 hover:underline">
-            Learn More
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ LEARN MORE MODAL ============ -->
-  <div id="learn-more-modal" class="modal">
-    <div class="modal-content warm-shadow">
-      <span class="close-button" onclick="hideModal('learn-more-modal')">&times;</span>
-      <h2 class="text-3xl font-bold text-gray-800 mb-4">What is hygge?</h2>
-      <p class="text-gray-600 leading-relaxed">
-        Now, you might be wondering, "What is hygge?" Hygge is the Danish art of creating a space that feels 
-        warm, inviting, and, yes, perfectly cozy. And until today, understanding hygge was subjective, elusive—a 
-        feeling. But not anymore.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-4">
-        With the Hygge Detector App, we're bringing the power of advanced AI, computer vision, and the art of 
-        design together to give you a tool that doesn’t just look at your room—it understands it.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-4">
-        Take a photo or upload one. In just seconds, our app analyzes the lighting, the colors, the objects—the 
-        very soul of your space. It gives you a simple, elegant score: your Hygge Score. And then? It tells you 
-        exactly how to improve it. Need more warmth? Add a candle. Too much clutter? Simplify. Missing harmony? 
-        We'll guide you.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-4">
-        This app doesn’t just show you the numbers—it makes you feel something. It inspires you to create a sanctuary 
-        for yourself, your loved ones, and your life.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-4">
-        We believe technology should enhance your humanity. With the Hygge Detector App, we’re helping you enhance your 
-        home, your mood, and your connection to what matters most.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-4">
-        This isn't just an app. It's hygge, in your pocket.
-      </p>
-    </div>
+<!-- ── DIAGONAL LINE PATTERN ── -->
+<div id="diag-lines">
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <defs>
+      <pattern id="diamond-lines" x="0" y="0" width="260" height="260" patternUnits="userSpaceOnUse">
+        <!-- Two crossing diagonals forming a diamond grid, matching the screenshot -->
+        <line x1="0" y1="0" x2="260" y2="260" stroke="#7a5c40" stroke-width="1"/>
+        <line x1="260" y1="0" x2="0" y2="260" stroke="#7a5c40" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#diamond-lines)"/>
+  </svg>
+</div>
+<!-- ── FLOATING SPECKS ── -->
+<canvas id="specks"></canvas>
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">Matthew Hoyt</div>
+  <div class="nav-links">
+    <a href="#apps">Apps</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <button onclick="openModal('privacy-modal')">Privacy</button>
+    <button onclick="openModal('terms-modal')">Terms</button>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-    <!-- ============ Bormes MODAL ============ -->
-  <div id="Bormes-modal" class="modal">
-    <div class="modal-content warm-shadow">
-      <span class="close-button" onclick="hideModal('Bormes-modal')">&times;</span>
-      <h2 class="text-3xl font-bold text-gray-800 mb-4">Bormes Les Mimosas</h2>
-      <p class="text-gray-600 leading-relaxed">
-        Technology should amplify the best parts of life—not complicate them. And that’s exactly what this app does. It’s not just another travel app. It’s a beautifully designed, intuitive gateway to one of the most breathtaking places on Earth—Bormes-les-Mimosas.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-4">
-        With just a few taps, you’re immersed in the charm of the village, its hidden gems, and its stunning landscapes. The app doesn’t just give you information—it guides you, it inspires you, and it helps you experience the magic of this place in a way that feels effortless.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-4">
-       It’s elegant. It’s seamless. And it just works. That’s what great technology is all about.
-      </p>
-    </div>
-  </div>
-
-      <!-- ============ Idioms MODAL ============ -->
-  <div id="Idioms-modal" class="modal">
-    <div class="modal-content warm-shadow">
-      <span class="close-button" onclick="hideModal('Idioms-modal')">&times;</span>
-      <h2 class="text-3xl font-bold text-gray-800 mb-4">Danish Idioms Quiz</h2>
-      <p class="text-gray-600 leading-relaxed">
-        Language isn’t just about words—it’s about culture, personality, and expression. And in Denmark, nothing captures that better than its rich, quirky slang.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-4">
-       With the Danish Idioms Quiz, we’ve created a revolutionary way to not just learn Danish—but to think Danish. It’s fun. It’s unpredictable. And it challenges you to go beyond the textbook and speak like a local.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-4">
-       Choose your level. Step into the game. And see how many you can get right—before the language gets you.
-
-This isn’t just a quiz. It’s an experience. And it’s going to transform the way you connect with Denmark. One idiom at a time.
-      </p>
-    </div>
-  </div>
-
-  <!-- ============ Ring Log MODAL ============ -->
-<div id="RingLog-modal" class="modal">
-  <div class="modal-content warm-shadow">
-    <span class="close-button" onclick="hideModal('RingLog-modal')">&times;</span>
-    <h2 class="text-3xl font-bold text-gray-800 mb-4">Ring Log</h2>
-    <p class="text-gray-600 leading-relaxed">
-      Staying connected is everything. But life gets busy. Days turn into weeks, weeks into months, and before you know it—you’ve lost touch with the people who matter most.
-    </p>
-    <p class="text-gray-600 leading-relaxed mt-4">
-      Introducing the Ring Log App, a beautifully simple way to never forget to check in again. It remembers the last time you called someone and gently reminds you when it's time to reach out. No spreadsheets, no mental notes—just seamless, thoughtful connection. Want to call your best friend every two weeks? Done. Need to follow up with a client every month? Easy. It’s your relationships, your way, effortlessly managed.
-    </p>
-    <p class="text-gray-600 leading-relaxed mt-4">
-      This isn’t just a reminder app. It’s about being present. It’s about showing up. And it’s about making sure that no important connection ever fades away again.
-      <br><br>
-      Because the best calls are the ones you never forget to make.
-      <br>
-      <a href="https://apps.apple.com/us/app/ringlog/id6741731973" target="_blank" class="text-blue-500 hover:underline">
-        https://apps.apple.com/us/app/ringlog/id6741731973
-      </a>
-    </p>
-  </div>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#apps" onclick="closeMobile()">Apps</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <button onclick="closeMobile(); openModal('privacy-modal')">Privacy</button>
+  <button onclick="closeMobile(); openModal('terms-modal')">Terms</button>
 </div>
 
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
 
-   <!-- ============ Gift MODAL ============ -->
-  <div id="Gift-modal" class="modal">
-    <div class="modal-content warm-shadow">
-      <span class="close-button" onclick="hideModal('Gift-modal')">&times;</span>
-      <h2 class="text-3xl font-bold text-gray-800 mb-4">Gift Ideas</h2>
-      <p class="text-gray-600 leading-relaxed">
-       We’ve all been there. A birthday, an anniversary, or the holidays are coming up, and you find yourself staring at a blank screen, thinking: What do I get them?
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-4">
-        That’s a problem. And great technology solves problems.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-4">
-      This app doesn’t just give you random gift ideas—it understands the person you’re shopping for. It learns from preferences, occasions, and even subtle hints, and then—like magic—it surfaces the perfect gift. No more endless searching, no more last-minute panic.
-      </p>
-       <p class="text-gray-600 leading-relaxed mt-4">
-     It’s simple. It’s thoughtful. And it just works.
-      </p>
-       <p class="text-gray-600 leading-relaxed mt-4">
-      Because at the heart of it, gift-giving isn’t about the thing—it’s about the feeling. This app helps you give something that truly matters.
-      </p>
+  <div class="hero-left">
+    <div class="hero-eyebrow">App Support Center</div>
+    <h1>Thoughtful apps<br>for <em>everyday</em><br>living</h1>
+    <p class="hero-sub">Discover tools built around the moments that matter — connection, coziness, culture, and care.</p>
+    <a href="#apps" class="hero-cta">
+      Explore the apps
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+    </a>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-orb">
+      <div class="hero-orb-text">MH</div>
     </div>
   </div>
 
-
-  <!-- ============ FAQ SECTION ============ -->
-  <section id="faq" class="py-20 relative z-10">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Frequently Asked Questions</h2>
-      <div class="space-y-6">
-        <!-- FAQ 1 -->
-        <div class="warm-shadow rounded-lg p-6 bg-white">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">How do I get support for an app?</h3>
-          <p class="text-gray-600">
-            Each app has its own dedicated support section. Select your app above to find specific help and guidance.
-          </p>
-        </div>
-        <!-- FAQ 2 -->
-        <div class="warm-shadow rounded-lg p-6 bg-white">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">How do I report an issue?</h3>
-          <p class="text-gray-600">
-            You can report issues through the contact form below or by emailing our support team directly.
-          </p>
-        </div>
-        <!-- FAQ 3 -->
-        <div class="warm-shadow rounded-lg p-6 bg-white">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Are my data and privacy protected?</h3>
-          <p class="text-gray-600">
-            Yes, we take data protection seriously. See our 
-            <button onclick="showModal('privacy-modal')" class="text-blue-600 hover:underline">privacy policy</button> 
-            for detailed information about how we handle your data.
-          </p>
-        </div>
-      </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Apps available</div>
     </div>
-  </section>
-
-  <!-- ============ CONTACT SECTION ============ -->
-<section id="contact" class="py-20 bg-white bg-opacity-90 relative z-10">
-  <div class="max-w-4xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Contact Support</h2>
-   <div class="email-support-card p-8 bg-white rounded-lg">
-  <div class="text-center">
-    <p class="text-gray-600 mb-4">Need help with one of our apps? We're here to assist you!</p>
-   <a href="mailto:Matthewhoytapps@gmail.com" 
-   class="email-support-button">
-   Email Support
-</a>
-  </div>
-</div>
+    <div class="stat-item">
+      <div class="stat-num">iOS</div>
+      <div class="stat-label">Platform</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">AI</div>
+      <div class="stat-label">Powered</div>
+    </div>
   </div>
 </section>
 
-  <!-- ============ PRIVACY POLICY MODAL ============ -->
-  <div id="privacy-modal" class="modal">
-    <div class="modal-content warm-shadow">
-      <span class="close-button" onclick="hideModal('privacy-modal')">&times;</span>
-      <h2 class="text-3xl font-bold text-gray-800 mb-6">Privacy Policy</h2>
-      <div class="space-y-6 text-gray-600">
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">Information We Collect</h3>
-          <p>In-App Purchases:</p>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>
-              All payments are processed securely through Apple’s in-app purchase system. 
-              We do not collect or store payment information. 
-              For details on Apple’s privacy practices, please visit Apple’s Privacy Policy.
-            </li>
-          </ul>
-          <p class="mt-4">Usage Data:</p>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>
-              We may collect anonymous data on app usage, such as how often features are used, 
-              to improve the app’s functionality.
-            </li>
-          </ul>
-          <p class="mt-4">Images Submitted for Analysis:</p>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>Any images uploaded or taken with the app are processed locally on your device. 
-                We do not store or share these images.</li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">How We Use Your Data</h3>
-          <p>Unlocking Premium Features:</p>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>We use purchase confirmation data to enable premium features or subscriptions.</li>
-          </ul>
-          <p class="mt-4">Improving the App:</p>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>Anonymous usage data helps us refine the app and add new features.</li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">Data Sharing</h3>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>
-              We do not sell or share your personal information with third parties. 
-              Payment data is securely handled by Apple.
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">Your Rights</h3>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>You can manage or cancel subscriptions via your Apple account.</li>
-            <li>If you have any concerns about your data, please contact us at Matthewhoytapps@gmail.com.</li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">Updates to This Policy</h3>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>
-              We may update this policy from time to time. Changes will be posted within the app and on our website.
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">How We Use Your Information</h3>
-          <p>We use the collected information to:</p>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>Provide and improve our services</li>
-            <li>Analyze app performance and fix issues</li>
-            <li>Communicate with you about updates and support</li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">Contact Us</h3>
-          <p>If you have any questions about this privacy policy, please contact us at <strong>Matthewhoytapps@gmail.com</strong></p>
-        </section>
-      </div>
-    </div>
-  </div>
-  <!-- ============ TERMS OF SERVICE MODAL ============ -->
-  <div id="terms-modal" class="modal">
-    <div class="modal-content warm-shadow">
-      <span class="close-button" onclick="hideModal('terms-modal')">&times;</span>
-      <h2 class="text-3xl font-bold text-gray-800 mb-6">Terms of Service</h2>
-      <div class="space-y-6 text-gray-600">
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">Acceptance of Terms</h3>
-          <p>
-            By downloading, installing, or using our applications, you agree to be bound by these Terms of Service. 
-            If you do not agree, please stop using our apps.
-          </p>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">License to Use</h3>
-          <p>Personal Use Only:</p>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>
-              We grant you a limited, non-exclusive, non-transferable license to use our applications for personal, 
-              non-commercial purposes.
-            </li>
-          </ul>
-          <p class="mt-4">Age Requirement:</p>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>
-              You must be at least 13 years old to use our apps. If you are under 18, you must have parental or 
-              guardian consent.
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">In-App Purchases</h3>
-          <p>Our apps may offer optional in-app purchases, such as premium features or subscriptions</p>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>All purchases are processed securely through in-app purchases.</li>
-            <li>Purchased features are non-transferable and non-refundable unless required by applicable law.</li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">Intellectual Property</h3>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>
-              All content, logos, and materials in Hygge Detector are owned by us and protected by copyright laws. 
-              You may not copy, modify, distribute, or sell any part of the app.
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">API Use</h3>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>
-              Some of our apps use OpenAI’s API to generate content for analysis and recommendations. 
-              All usage complies with OpenAI's terms of service and privacy policies.
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">Disclaimer of Warranties</h3>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>Apps are provided "as is" without warranties of any kind, either express or implied.</li>
-            <li>We do not guarantee the accuracy, reliability, or suitability of the app’s results.</li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">Limitation of Liability</h3>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>
-              To the maximum extent permitted by law, we are not liable for any damages arising from your use of the app, 
-              including indirect, incidental, or consequential damages.
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">Termination</h3>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>
-              We reserve the right to terminate or suspend your access to the app at any time, with or without notice, 
-              if you violate these Terms and Conditions.
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">Governing Law</h3>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>
-              These terms are governed by the laws of The United States of America. Any disputes will be resolved exclusively 
-              in the courts of The United States of America.
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">Changes to Terms</h3>
-          <ul class="list-disc pl-6 mt-2 space-y-2">
-            <li>
-              We may update these Terms and Conditions from time to time. Updates will be posted within the app and on our 
-              website.
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">Contact Information</h3>
-          <p>
-            If you have any questions about these Terms of Service, please contact us at 
-            <strong>Matthewhoytapps@gmail.com</strong>
-          </p>
-        </section>
-      </div>
-    </div>
+<!-- ── APPS ── -->
+<section id="apps">
+  <div class="section-header reveal">
+    <div class="section-label">Our collection</div>
+    <h2 class="section-title">Five apps.<br>One philosophy.</h2>
+    <p class="section-desc">Each app solves a real problem with elegance — nothing superfluous, nothing missing.</p>
   </div>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="bg-gray-800 text-white py-8 text-center relative z-10">
-    <p>&copy; 2024 Matthew Hoyt. All rights reserved.</p>
-  </footer>
+  <div class="apps-grid">
+    <div class="app-card card-hygge reveal" onclick="openModal('hygge-modal')">
+      <div class="app-card-header">
+        <div class="app-icon">🕯️</div>
+        <div class="app-arrow">↗</div>
+      </div>
+      <div class="app-card-meta">
+        <div class="app-name">Hygge Detector</div>
+        <span class="app-tag">AI · Interior</span>
+      </div>
+      <p class="app-desc">Discover the coziness in your space with AI-powered visual analysis and a personalised hygge score.</p>
+    </div>
+    <div class="app-card card-bormes reveal" onclick="openModal('bormes-modal')">
+      <div class="app-card-header">
+        <div class="app-icon">🌿</div>
+        <div class="app-arrow">↗</div>
+      </div>
+      <div class="app-card-meta">
+        <div class="app-name">Bormes Apartment</div>
+        <span class="app-tag">Travel · Local</span>
+      </div>
+      <p class="app-desc">Your personal guide to Bormes-les-Mimosas — hidden gems, local charm, all in one beautiful app.</p>
+    </div>
+    <div class="app-card card-danish reveal" onclick="openModal('danish-modal')">
+      <div class="app-card-header">
+        <div class="app-icon">🇩🇰</div>
+        <div class="app-arrow">↗</div>
+      </div>
+      <div class="app-card-meta">
+        <div class="app-name">Danish Idioms Quiz</div>
+        <span class="app-tag">Language · Culture</span>
+      </div>
+      <p class="app-desc">Go beyond the textbook. Test your knowledge of Danish slang and think like a local.</p>
+    </div>
+    <div class="app-card card-ring reveal" onclick="openModal('ring-modal')">
+      <div class="app-card-header">
+        <div class="app-icon">📞</div>
+        <div class="app-arrow">↗</div>
+      </div>
+      <div class="app-card-meta">
+        <div class="app-name">Ring Log</div>
+        <span class="app-tag">Relationships</span>
+      </div>
+      <p class="app-desc">Never lose touch. Set your own call rhythm and get gentle reminders to reach the people who matter.</p>
+    </div>
+    <div class="app-card card-gift reveal" onclick="openModal('gift-modal')">
+      <div class="app-card-header">
+        <div class="app-icon">🎁</div>
+        <div class="app-arrow">↗</div>
+      </div>
+      <div class="app-card-meta">
+        <div class="app-name">Gift Ideas</div>
+        <span class="app-tag">AI · Lifestyle</span>
+      </div>
+      <p class="app-desc">From blank screen to perfect gift. AI that understands the person, not just the occasion.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- ============ JAVASCRIPT ============ -->
-  <script>
+<!-- ── FAQ ── -->
+<section id="faq">
+  <div class="reveal">
+    <div class="section-label">Common questions</div>
+    <h2 class="section-title">Got questions?<br>We have answers.</h2>
+  </div>
 
-       const canvas = document.getElementById('specks');
-const ctx = canvas.getContext('2d');
+  <div class="faq-grid">
+    <div class="faq-item reveal">
+      <div class="faq-q">How do I get support for an app?</div>
+      <p class="faq-a">Select any app above to read about it in detail, then reach out via the contact section below. We aim to respond within 24 hours.</p>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">How do I report a bug or issue?</div>
+      <p class="faq-a">Email our support team directly at Matthewhoytapps@gmail.com with a brief description and your device model. Screenshots are always helpful.</p>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Is my data and privacy protected?</div>
+      <p class="faq-a">Yes — we take it seriously. Read our <button onclick="openModal('privacy-modal')">full privacy policy</button> for how we handle your data. Short version: we don't sell it, ever.</p>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Can I get a refund on an in-app purchase?</div>
+      <p class="faq-a">All purchases go through Apple's system. Refund requests are handled directly through your Apple account or Apple Support.</p>
+    </div>
+  </div>
+</section>
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="reveal">
+    <div class="section-label">Get in touch</div>
+    <h2 class="contact-title">We're here<br>to help.</h2>
+    <p class="contact-sub">Have a question, found a bug, or just want to share feedback? Drop us a line — every message is read personally.</p>
+    <a href="mailto:Matthewhoytapps@gmail.com" class="contact-email-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="12" height="9" rx="1.5"/><path d="M1 4l6 5 6-5"/></svg>
+      Email support
+    </a>
+  </div>
+  <div class="contact-card reveal">
+    <div class="contact-card-label">Direct email</div>
+    <div class="contact-card-email">Matthewhoytapps@gmail.com</div>
+    <div class="contact-card-note">
+      We typically respond within one business day. For in-app purchase refunds, please use your Apple account settings directly.
+    </div>
+  </div>
+</section>
 
-resizeCanvas();
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="foot-logo">Matthew Hoyt</div>
+  <div class="foot-links">
+    <button onclick="openModal('privacy-modal')">Privacy</button>
+    <button onclick="openModal('terms-modal')">Terms</button>
+  </div>
+  <div>© 2024 Matthew Hoyt</div>
+</footer>
 
-// Define paths that mimic the reference image pattern
-// Each path is defined as a series of control points for Bezier curves
-const paths = [
-  // Diagonal paths with rounded corners
-  {
+<!-- ════ MODALS ════ -->
+
+<!-- Hygge -->
+<div class="modal-overlay" id="hygge-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('hygge-modal')">✕</button>
+    <div class="modal-eyebrow">AI · Interior</div>
+    <h2 class="modal-title">Hygge Detector</h2>
+    <div class="modal-body">
+      <p>You might be wondering — what is hygge? It's the Danish art of creating a space that feels warm, inviting, and perfectly cozy. Until now, understanding hygge was subjective, elusive — a feeling. Not anymore.</p>
+      <p>With Hygge Detector, we bring the power of advanced AI and computer vision together to give you a tool that doesn't just look at your room — it <em>understands</em> it.</p>
+      <p>Take a photo or upload one. In seconds, the app analyses the lighting, colours, and objects — the very soul of your space — and gives you a simple, elegant Hygge Score. Then it tells you exactly how to improve it. Need more warmth? Add a candle. Too much clutter? Simplify. Missing harmony? We'll guide you.</p>
+      <p>Technology should enhance your humanity. Hygge Detector helps you enhance your home, your mood, and your connection to what matters most. This isn't just an app — it's hygge, in your pocket.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Bormes -->
+<div class="modal-overlay" id="bormes-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('bormes-modal')">✕</button>
+    <div class="modal-eyebrow">Travel · Local</div>
+    <h2 class="modal-title">Bormes Apartment</h2>
+    <div class="modal-body">
+      <p>Technology should amplify the best parts of life — not complicate them. And that's exactly what this app does. It's a beautifully designed, intuitive gateway to one of the most breathtaking places on Earth: Bormes-les-Mimosas.</p>
+      <p>With just a few taps, you're immersed in the charm of the village, its hidden gems, and its stunning landscapes. The app doesn't just give you information — it guides you, inspires you, and helps you experience the magic of this place effortlessly.</p>
+      <p>Elegant. Seamless. It just works. That's what great technology is all about.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Danish -->
+<div class="modal-overlay" id="danish-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('danish-modal')">✕</button>
+    <div class="modal-eyebrow">Language · Culture</div>
+    <h2 class="modal-title">Danish Idioms Quiz</h2>
+    <div class="modal-body">
+      <p>Language isn't just about words — it's about culture, personality, and expression. In Denmark, nothing captures that better than its rich, quirky slang.</p>
+      <p>With the Danish Idioms Quiz, we've created a way to not just learn Danish — but to <em>think</em> Danish. It's fun, unpredictable, and challenges you to go beyond the textbook and speak like a local.</p>
+      <p>Choose your level. Step into the game. See how many you can get right before the language gets you. This isn't just a quiz — it's an experience. One idiom at a time.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Ring Log -->
+<div class="modal-overlay" id="ring-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('ring-modal')">✕</button>
+    <div class="modal-eyebrow">Relationships</div>
+    <h2 class="modal-title">Ring Log</h2>
+    <div class="modal-body">
+      <p>Staying connected is everything. But life gets busy. Days turn into weeks, weeks into months, and before you know it — you've lost touch with the people who matter most.</p>
+      <p>Ring Log is a beautifully simple way to never forget to check in again. It remembers the last time you called someone and gently reminds you when it's time to reach out. No spreadsheets, no mental notes — just seamless, thoughtful connection.</p>
+      <p>Want to call your best friend every two weeks? Done. Need to follow up with a client every month? Easy. It's your relationships, your way, effortlessly managed.</p>
+      <p>Because the best calls are the ones you never forget to make.</p>
+      <p><a href="https://apps.apple.com/us/app/ringlog/id6741731973" target="_blank" class="modal-link">Download on the App Store →</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- Gift -->
+<div class="modal-overlay" id="gift-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('gift-modal')">✕</button>
+    <div class="modal-eyebrow">AI · Lifestyle</div>
+    <h2 class="modal-title">Gift Ideas</h2>
+    <div class="modal-body">
+      <p>We've all been there. A birthday, an anniversary, the holidays are coming up, and you find yourself staring at a blank screen thinking: <em>what do I get them?</em></p>
+      <p>Gift Ideas doesn't give you random suggestions — it understands the person you're shopping for. It learns from preferences, occasions, and subtle hints, then surfaces the perfect gift like magic. No more endless searching, no more last-minute panic.</p>
+      <p>Simple. Thoughtful. It just works. Because at the heart of it, gift-giving isn't about the thing — it's about the feeling. This app helps you give something that truly matters.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Privacy -->
+<div class="modal-overlay" id="privacy-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('privacy-modal')">✕</button>
+    <div class="modal-eyebrow">Legal</div>
+    <h2 class="modal-title">Privacy Policy</h2>
+    <div class="modal-body">
+      <h3>Information We Collect</h3>
+      <p><strong>In-App Purchases:</strong> All payments are processed securely through Apple's in-app purchase system. We do not collect or store payment information.</p>
+      <p><strong>Usage Data:</strong> We may collect anonymous data on app usage to improve functionality.</p>
+      <p><strong>Images:</strong> Any images uploaded are processed locally on your device. We do not store or share these images.</p>
+      <h3>How We Use Your Data</h3>
+      <ul>
+        <li>To enable premium features or subscriptions</li>
+        <li>To improve the app through anonymous usage analysis</li>
+      </ul>
+      <h3>Data Sharing</h3>
+      <p>We do not sell or share your personal information with third parties. Payment data is handled securely by Apple.</p>
+      <h3>Your Rights</h3>
+      <ul>
+        <li>You can manage or cancel subscriptions via your Apple account</li>
+        <li>For data concerns, contact us at Matthewhoytapps@gmail.com</li>
+      </ul>
+      <h3>Updates</h3>
+      <p>We may update this policy from time to time. Changes will be posted within the app and on our website.</p>
+      <h3>Contact</h3>
+      <p>Questions? Email us at <strong>Matthewhoytapps@gmail.com</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- Terms -->
+<div class="modal-overlay" id="terms-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('terms-modal')">✕</button>
+    <div class="modal-eyebrow">Legal</div>
+    <h2 class="modal-title">Terms of Service</h2>
+    <div class="modal-body">
+      <h3>Acceptance of Terms</h3>
+      <p>By downloading, installing, or using our applications, you agree to be bound by these Terms of Service.</p>
+      <h3>License to Use</h3>
+      <ul>
+        <li>We grant a limited, non-exclusive, non-transferable license for personal, non-commercial use</li>
+        <li>You must be at least 13 years old; under 18 requires parental consent</li>
+      </ul>
+      <h3>In-App Purchases</h3>
+      <ul>
+        <li>All purchases are processed securely through Apple's in-app purchase system</li>
+        <li>Purchased features are non-transferable and non-refundable unless required by applicable law</li>
+      </ul>
+      <h3>Intellectual Property</h3>
+      <p>All content, logos, and materials are owned by us and protected by copyright law. You may not copy, modify, distribute, or sell any part of the app.</p>
+      <h3>API Use</h3>
+      <p>Some apps use OpenAI's API to generate content. All usage complies with OpenAI's terms and privacy policies.</p>
+      <h3>Disclaimer</h3>
+      <ul>
+        <li>Apps are provided "as is" without warranties of any kind</li>
+        <li>We do not guarantee the accuracy or suitability of results</li>
+      </ul>
+      <h3>Governing Law</h3>
+      <p>These terms are governed by the laws of the United States of America.</p>
+      <h3>Contact</h3>
+      <p>Questions? Email <strong>Matthewhoytapps@gmail.com</strong></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── Modal ──
+  function openModal(id) {
+    document.getElementById(id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.modal-overlay').forEach(el => {
+    el.addEventListener('click', e => {
+      if (e.target === el) closeModal(el.id);
+    });
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.active').forEach(el => closeModal(el.id));
+    }
+  });
+
+  // ── Mobile nav ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+  function closeMobile() { mobileNav.classList.remove('open'); }
+
+  // ── Scroll reveal ──
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), 60);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ── Stagger cards ──
+  document.querySelectorAll('.apps-grid .app-card').forEach((card, i) => {
+    card.style.transitionDelay = (i * 80) + 'ms';
+  });
+  document.querySelectorAll('.faq-item').forEach((item, i) => {
+    item.style.transitionDelay = (i * 60) + 'ms';
+  });
+
+  // ── Smooth nav on scroll ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+
+<script>
+  // ── Floating Specks ──
+  const canvas = document.getElementById('specks');
+  const ctx = canvas.getContext('2d');
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  const paths = [{
     points: function(t) {
-      const cellSize = 300; // Size of one pattern cell
-      const cornerRadius = 50; // How rounded the corners are
-      
-      // Calculate base position in the grid
+      const cellSize = 300;
+      const cornerRadius = 50;
       const gridX = Math.floor(t * canvas.width / cellSize) * cellSize;
       const gridY = Math.floor(t * canvas.height / cellSize) * cellSize;
-      
-      // Position within current cell
       const localT = (t * canvas.width) % cellSize / cellSize;
-      
-      // Create diagonal path with rounded corners
+
       if (localT < 0.2) {
-        // Round the corner
         const angle = localT * Math.PI / 0.4;
-        return {
-          x: gridX + cornerRadius * (1 - Math.cos(angle)),
-          y: gridY + cornerRadius * (1 - Math.sin(angle))
-        };
+        return { x: gridX + cornerRadius * (1 - Math.cos(angle)), y: gridY + cornerRadius * (1 - Math.sin(angle)) };
       } else if (localT < 0.8) {
-        // Diagonal line
         const progress = (localT - 0.2) / 0.6;
-        return {
-          x: gridX + cornerRadius + progress * (cellSize - 2 * cornerRadius),
-          y: gridY + cornerRadius + progress * (cellSize - 2 * cornerRadius)
-        };
+        return { x: gridX + cornerRadius + progress * (cellSize - 2 * cornerRadius), y: gridY + cornerRadius + progress * (cellSize - 2 * cornerRadius) };
       } else {
-        // Round the corner
-        const angle = (localT - 0.8) * Math.PI / 0.4 + Math.PI/2;
-        return {
-          x: gridX + cellSize - cornerRadius + cornerRadius * Math.cos(angle),
-          y: gridY + cellSize - cornerRadius + cornerRadius * Math.sin(angle)
-        };
+        const angle = (localT - 0.8) * Math.PI / 0.4 + Math.PI / 2;
+        return { x: gridX + cellSize - cornerRadius + cornerRadius * Math.cos(angle), y: gridY + cellSize - cornerRadius + cornerRadius * Math.sin(angle) };
       }
     }
-  },
-  // Add more path variations here for the complete pattern
-];
+  }];
 
-// Create specks that will follow the paths
-const specks = [];
-const numSpecks = 150; // Increased number for better coverage of paths
-
-for (let i = 0; i < numSpecks; i++) {
-  specks.push({
-    pathIndex: Math.floor(Math.random() * paths.length),
-    pathProgress: Math.random(), // Random starting position on path
-    speed: Math.random() * 0.0002 + 0.0001, // Varied speeds for more organic movement
-    radius: Math.random() * 2 + 1, // Slightly smaller for a more delicate look
-    opacity: Math.random() * 0.3 + 0.2, // More subtle opacity
-    pulse: Math.random() * Math.PI * 2,
-    pulseSpeed: Math.random() * 0.02 + 0.01
-  });
-}
-
-function drawSpecks() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  specks.forEach(speck => {
-    // Update position along path
-    speck.pathProgress += speck.speed;
-    if (speck.pathProgress > 1) {
-      speck.pathProgress = 0;
-      // Optionally switch to a different path
-      speck.pathIndex = Math.floor(Math.random() * paths.length);
-    }
-
-    // Calculate position on path
-    const position = paths[speck.pathIndex].points(speck.pathProgress);
-
-    // Update pulse effect
-    speck.pulse += speck.pulseSpeed;
-    const pulseEffect = Math.sin(speck.pulse) * 0.15;
-    const currentOpacity = speck.opacity + pulseEffect;
-
-    // Draw speck with soft gradient
-    const gradient = ctx.createRadialGradient(
-      position.x, position.y, 0,
-      position.x, position.y, speck.radius * 2
-    );
-    
-    gradient.addColorStop(0, `rgba(255, 255, 255, ${currentOpacity})`);
-    gradient.addColorStop(0.5, `rgba(255, 255, 255, ${currentOpacity * 0.5})`);
-    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-    
-    ctx.beginPath();
-    ctx.fillStyle = gradient;
-    ctx.arc(position.x, position.y, speck.radius * 2, 0, Math.PI * 2);
-    ctx.fill();
-  });
-  
-  requestAnimationFrame(drawSpecks);
-}
-
-// Add the SVG pattern for the visible lines
-const svgPattern = `
-<svg width="100%" height="100%" style="position: fixed; top: 0; left: 0; z-index: 0; opacity: 0.1;">
-  <defs>
-    <pattern id="linePattern" x="0" y="0" width="300" height="300" patternUnits="userSpaceOnUse">
-      <path d="M0,0 Q50,50 300,300" fill="none" stroke="currentColor" stroke-width="1"/>
-      <path d="M300,0 Q250,50 0,300" fill="none" stroke="currentColor" stroke-width="1"/>
-    </pattern>
-  </defs>
-  <rect width="100%" height="100%" fill="url(#linePattern)"/>
-</svg>`;
-
-document.body.insertAdjacentHTML('afterbegin', svgPattern);
-
-// Start the animation
-drawSpecks();
-
-// Handle window resizing
-window.addEventListener('resize', resizeCanvas);
-
-    /* ========== MOBILE MENU TOGGLE ========== */
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+  const specks = [];
+  for (let i = 0; i < 200; i++) {
+    specks.push({
+      pathIndex: 0,
+      pathProgress: Math.random(),
+      speed: Math.random() * 0.0002 + 0.0001,
+      radius: Math.random() * 4 + 1.5,
+      opacity: Math.random() * 0.35 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01
     });
+  }
 
-    /* ========== MODAL FUNCTIONS ========== */
-    function showModal(modalId) {
-      document.getElementById(modalId).classList.add('active');
-      document.body.style.overflow = 'hidden'; /* Prevent scrolling behind the modal */
-    }
+  function drawSpecks() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    specks.forEach(speck => {
+      speck.pathProgress += speck.speed;
+      if (speck.pathProgress > 1) speck.pathProgress = 0;
 
-    function hideModal(modalId) {
-      document.getElementById(modalId).classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
+      const pos = paths[speck.pathIndex].points(speck.pathProgress);
+      speck.pulse += speck.pulseSpeed;
+      const currentOpacity = speck.opacity + Math.sin(speck.pulse) * 0.15;
 
-    // Close modal if user clicks outside of modal content
-    window.addEventListener('click', (e) => {
-      if (e.target.classList.contains('modal')) {
-        e.target.classList.remove('active');
-        document.body.style.overflow = 'auto';
+      // Larger bright core for the star-glint look in the screenshot
+      const g = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, speck.radius * 4);
+      g.addColorStop(0,   `rgba(255,250,230,${Math.min(currentOpacity * 1.8, 0.9)})`);
+      g.addColorStop(0.3, `rgba(255,240,200,${currentOpacity})`);
+      g.addColorStop(0.7, `rgba(255,220,160,${currentOpacity * 0.4})`);
+      g.addColorStop(1,   'rgba(255,200,120,0)');
+
+      ctx.beginPath();
+      ctx.fillStyle = g;
+      ctx.arc(pos.x, pos.y, speck.radius * 4, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Sharp bright centre for the star-glint sparkle
+      if (speck.radius > 3) {
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(255,255,255,${Math.min(currentOpacity * 2, 0.95)})`;
+        ctx.arc(pos.x, pos.y, speck.radius * 0.6, 0, Math.PI * 2);
+        ctx.fill();
       }
     });
-
-    // Close modal on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        document.querySelectorAll('.modal').forEach((modal) => {
-          modal.classList.remove('active');
-        });
-        document.body.style.overflow = 'auto';
-      }
-    });
-  </script>
+    requestAnimationFrame(drawSpecks);
+  }
+  drawSpecks();
+</script>
 </body>
 </html>
 
