@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -767,21 +767,6 @@
   <div class="hero-right">
     <div class="hero-orb">
       <div class="hero-orb-text">MH</div>
-    </div>
-  </div>
-
-  <div class="hero-stats">
-    <div class="stat-item">
-      <div class="stat-num">5</div>
-      <div class="stat-label">Apps available</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">iOS</div>
-      <div class="stat-label">Platform</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">AI</div>
-      <div class="stat-label">Powered</div>
     </div>
   </div>
 </section>
